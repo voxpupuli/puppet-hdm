@@ -7,7 +7,7 @@ development:
     <%= $key %>: <%= $value %>
   <%- } -%>
   config_dir: <%= $hdm::puppet_code_dir %>
-<%- if $hdm::ldap_settings !~ Undef { -%>
+<%- if ! $hdm::ldap_settings.empty { -%>
   ldap:
   <%- $hdm::ldap_settings.each |$key, $value| { -%>
     <%= $key %>: <%= $value %>

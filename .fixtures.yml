@@ -8,3 +8,4 @@ fixtures:
     apt: "puppetlabs/apt"
     yumrepo: "puppetlabs/yumrepo_core"
     vcsrepo: "puppetlabs/vcsrepo"
+    systemd: "puppet/systemd"

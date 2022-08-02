@@ -20,9 +20,15 @@
 #
 # @param port The port where HDM should run on
 #
+# @param bind_ip The ip address to bind the process to
+#
 # @param hdm_path Path where one wants to install and configure hdm
 #
 # @param git_url The git URL to clone the hdm repo from
+#
+# @param user The hdm user name
+#
+# @param group The hdm group name
 #
 # @param puppetdb_settings A hash to provide information on how
 #   HDM can connect to puppetdb
@@ -58,11 +64,11 @@
 # @param read_only Set to false if you want the ability to 
 #   change data via HDM webfrontend. WARNING!! untested!!!
 #   Changes are stored via GIT.
-#   Setting this to true also needs the git_data Hash parameter
+#   Setting this to true also needs the git_data Array parameter
 #
 # @param git_data Configure several settings related to the option
 #   to modify data via Webfrontend. WARNING!! untested!!
-#   Required Hash data:
+#   Required Array of hash data:
 #     [
 #       {
 #         'datadir'        => 'modules/hieradata/data',
@@ -92,15 +98,18 @@ class hdm (
   Boolean                       $manage_docker         = true,
   String[1]                     $version               = 'main',
   Stdlib::Port                  $port                  = 3000,
+  String[1]                     $bind_ip               = '0.0.0.0',
   Stdlib::Unixpath              $hdm_path              = '/etc/hdm',
+  String[1]                     $user                  = 'hdm',
+  String[1]                     $group                 = 'hdm',
   String[1]                     $git_url               = 'https://github.com/betadots/hdm.git',
   Hash                          $puppetdb_settings     = { 'server' => 'http://localhost:8080', },
   Stdlib::Unixpath              $puppet_code_dir       = '/etc/puppetlabs/code',
   String[1]                     $hdm_hiera_config_file = 'hiera.yaml',
   Boolean                       $allow_encryption      = false,
   Boolean                       $read_only             = true,
-  Optional[Hash]                $git_data              = undef,
-  Optional[Hash]                $ldap_settings         = undef,
+  Array                         $git_data              = [],
+  Hash                          $ldap_settings         = {},
 ) {
   case $method {
     'docker': {
