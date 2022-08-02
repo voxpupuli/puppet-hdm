@@ -7,7 +7,13 @@
 #    When using puppet-ruby we install bundler gem into 
 #    the puppet-agent ruby installation.
 #
+# @param version Select the version to deploy.
+#   Version is the image tag name when using docker and
+#   the git tag when using puppet-ruby
+#
 # @param port The port where HDM should run on
+#
+# @parma hdm_path Path where one wants to install and configure hdm
 #
 # @param puppetdb_settings A hash to provide information on how
 #   HDM can connect to puppetdb
@@ -74,7 +80,9 @@
 #   include hdm
 class hdm (
   Enum['docker', 'puppet-ruby'] $method                = 'docker',
+  String[1]                     $version               = 'main',
   Stdlib::Port                  $port                  = 3000,
+  Stdlib::Unixpath              $hdm_path              = '/etc/hdm',
   Hash                          $puppetdb_settings     = { 'server' => 'http://localhost:8080', },
   Stdlib::Unixpath              $puppet_code_dir       = '/etc/puppetlabs/code',
   String[1]                     $hdm_hiera_config_file = 'hiera.yaml',

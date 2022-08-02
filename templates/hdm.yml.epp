@@ -1,0 +1,14 @@
+---
+development:
+  read_only: <%= $hdm::read_only %>
+  allow_encryption: <%= $hdm::allow_encryption %>
+  puppet_db:
+  <%- $hdm::puppetdb_settings.each |$key, $value| { -%>
+    <%= $key %>: <%= $value %>
+  <% - } %>
+  config_dir: <%= $hdm::puppet_code_dir %>
+  ldap:
+  <%- $hdm::ldap_settings.each |$key, $value| { -%>
+    <%= $key %>: <%= $value %>
+  <%- } -%>
+
