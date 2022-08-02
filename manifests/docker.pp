@@ -4,7 +4,15 @@
 #
 # @example
 #   include hdm::docker
+#
+# @api private
+#
 class hdm::docker {
+
+  if $hdm::manage_docker {
+    include docker
+  }
+
   $directories = [
     $hdm::hdm_path,
     "${hdm::hdm_path}/certs",
@@ -15,11 +23,11 @@ class hdm::docker {
   }
   file { "${hdm::hdm_path}/hdm.yml":
     ensure  => file,
-    content => epp('modules/hdm/hdm.yml.epp'),
+    content => epp('hdm/hdm.yml.epp'),
   }
   file { "${hdm::hdm_path}/database.yml":
     ensure  => file,
-    content => epp('modules/hdm/database.yml'),
+    content => epp('hdm/database.yml'),
   }
   file { "${hdm::hdm_path}/db/development.sqlite3":
     ensure => file,

@@ -7,6 +7,13 @@
 #    When using puppet-ruby we install bundler gem into 
 #    the puppet-agent ruby installation.
 #
+# @param manage_docker Set to false if this module should NOT
+#   also include the docker class (without any arguments)
+#   Please note that the docker module only works on Debian,
+#   RedHat and windows systems.
+#   SLES users must install and start docker via puppet package
+#   and service resource.
+#
 # @param version Select the version to deploy.
 #   Version is the image tag name when using docker and
 #   the git tag when using puppet-ruby
@@ -80,6 +87,7 @@
 #   include hdm
 class hdm (
   Enum['docker', 'puppet-ruby'] $method                = 'docker',
+  Boolean                       $manage_docker         = true,
   String[1]                     $version               = 'main',
   Stdlib::Port                  $port                  = 3000,
   Stdlib::Unixpath              $hdm_path              = '/etc/hdm',

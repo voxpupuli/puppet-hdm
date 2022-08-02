@@ -5,10 +5,12 @@ development:
   puppet_db:
   <%- $hdm::puppetdb_settings.each |$key, $value| { -%>
     <%= $key %>: <%= $value %>
-  <% - } %>
+  <%- } -%>
   config_dir: <%= $hdm::puppet_code_dir %>
+<%- if $hdm::ldap_settings !~ Undef { -%>
   ldap:
   <%- $hdm::ldap_settings.each |$key, $value| { -%>
     <%= $key %>: <%= $value %>
   <%- } -%>
+<%- } -%>
 
