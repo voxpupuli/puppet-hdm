@@ -101,7 +101,7 @@ class hdm (
   Boolean                       $read_only             = true,
   Optional[Hash]                $git_data              = undef,
   Optional[Hash]                $ldap_settings         = undef,
-){
+) {
   case $method {
     'docker': {
       include hdm::docker
