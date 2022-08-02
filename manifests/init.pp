@@ -20,7 +20,9 @@
 #
 # @param port The port where HDM should run on
 #
-# @parma hdm_path Path where one wants to install and configure hdm
+# @param hdm_path Path where one wants to install and configure hdm
+#
+# @param git_url The git URL to clone the hdm repo from
 #
 # @param puppetdb_settings A hash to provide information on how
 #   HDM can connect to puppetdb
@@ -91,6 +93,7 @@ class hdm (
   String[1]                     $version               = 'main',
   Stdlib::Port                  $port                  = 3000,
   Stdlib::Unixpath              $hdm_path              = '/etc/hdm',
+  String[1]                     $git_url               = 'https://github.com/betadots/hdm.git',
   Hash                          $puppetdb_settings     = { 'server' => 'http://localhost:8080', },
   Stdlib::Unixpath              $puppet_code_dir       = '/etc/puppetlabs/code',
   String[1]                     $hdm_hiera_config_file = 'hiera.yaml',

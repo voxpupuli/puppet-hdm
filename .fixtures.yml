@@ -7,3 +7,4 @@ fixtures:
     docker: "puppetlabs/docker"
     apt: "puppetlabs/apt"
     yumrepo: "puppetlabs/yumrepo_core"
+    vcsrepo: "puppetlabs/vcsrepo"
