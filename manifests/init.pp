@@ -46,6 +46,7 @@
 #     {
 #       'server'           => 'https://localhost:8081',
 #       'token'            => '/etc/hdm/puppetdb.token',
+#       'cacert'           => '<path to cacert>',
 #     }
 #   ```
 #   Using SSL cert:
@@ -110,19 +111,19 @@ class hdm (
   Boolean                       $manage_docker         = true,
   String[1]                     $version               = 'main',
   Stdlib::Port                  $port                  = 3000,
-  String[1]                     $bind_ip               = '0.0.0.0',
+  Stdlib::IP::Address::Nosubnet $bind_ip               = '0.0.0.0',
   String[1]                     $hostname              = $facts['networking']['fqdn'],
   Stdlib::Unixpath              $hdm_path              = '/etc/hdm',
   String[1]                     $user                  = 'hdm',
   String[1]                     $group                 = 'hdm',
   String[1]                     $git_url               = 'https://github.com/betadots/hdm.git',
-  Hash                          $puppetdb_settings     = { 'server' => 'http://localhost:8080', },
+  Hdm::Puppetdb                 $puppetdb_settings     = { 'server' => 'http://localhost:8080', },
   Stdlib::Unixpath              $puppet_code_dir       = '/etc/puppetlabs/code',
   String[1]                     $hdm_hiera_config_file = 'hiera.yaml',
   Boolean                       $allow_encryption      = false,
   Boolean                       $read_only             = true,
-  Array                         $git_data              = [],
-  Hash                          $ldap_settings         = {},
+  Hdm::Gitdata                  $git_data              = [],
+  Hdm::Ldap_settings            $ldap_settings         = {},
 ) {
   case $method {
     'docker': {
