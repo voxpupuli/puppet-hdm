@@ -38,6 +38,7 @@ The following parameters are available in the `hdm` class:
 * [`version`](#version)
 * [`port`](#port)
 * [`bind_ip`](#bind_ip)
+* [`hostname`](#hostname)
 * [`hdm_path`](#hdm_path)
 * [`git_url`](#git_url)
 * [`user`](#user)
@@ -99,6 +100,14 @@ Data type: `String[1]`
 The ip address to bind the process to
 
 Default value: `'0.0.0.0'`
+
+##### <a name="hostname"></a>`hostname`
+
+Data type: `String[1]`
+
+The hostname to use
+
+Default value: `$facts['networking']['fqdn']`
 
 ##### <a name="hdm_path"></a>`hdm_path`
 

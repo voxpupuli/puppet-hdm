@@ -17,17 +17,21 @@ class hdm::docker {
     "${hdm::hdm_path}/certs",
     "${hdm::hdm_path}/db",
   ]
+
   file { $directories:
     ensure => directory,
   }
+
   file { "${hdm::hdm_path}/hdm.yml":
     ensure  => file,
     content => epp('hdm/hdm.yml.epp'),
   }
+
   file { "${hdm::hdm_path}/database.yml":
     ensure  => file,
     content => epp('hdm/database.yml'),
   }
+
   file { "${hdm::hdm_path}/db/development.sqlite3":
     ensure => file,
   }
@@ -48,7 +52,7 @@ class hdm::docker {
       "${hdm::hdm_path}/hdm.yml:/hdm/config/hdm.yml:ro",
       "${hdm::hdm_path}/database.yml:/hdm/config/database.yml:ro",
     ],
-    hostname         => $facts['networking']['fqdn'],
+    hostname         => $hdm::hostname,
     ports            => [$hdm::port],
     net              => 'host',
     extra_parameters => ["--user ${hdm::user}:${hdm::group}"],

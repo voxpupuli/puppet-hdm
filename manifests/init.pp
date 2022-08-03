@@ -22,6 +22,8 @@
 #
 # @param bind_ip The ip address to bind the process to
 #
+# @param hostname The hostname to use
+#
 # @param hdm_path Path where one wants to install and configure hdm
 #
 # @param git_url The git URL to clone the hdm repo from
@@ -109,6 +111,7 @@ class hdm (
   String[1]                     $version               = 'main',
   Stdlib::Port                  $port                  = 3000,
   String[1]                     $bind_ip               = '0.0.0.0',
+  String[1]                     $hostname              = $facts['networking']['fqdn'],
   Stdlib::Unixpath              $hdm_path              = '/etc/hdm',
   String[1]                     $user                  = 'hdm',
   String[1]                     $group                 = 'hdm',
