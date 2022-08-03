@@ -1,3 +1,4 @@
+# @summary type to enforce ldap settings for HDM
 type Hdm::Ldap_settings = Struct[
   {
     Optional[host]             => Stdlib::Host,

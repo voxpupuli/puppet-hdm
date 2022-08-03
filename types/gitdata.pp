@@ -1,3 +1,4 @@
+# @summary type to enforce git settings for HDM
 type Hdm::Gitdata = Array[
  Optional[Struct[
     {

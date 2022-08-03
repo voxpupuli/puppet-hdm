@@ -17,9 +17,9 @@
 
 ### Data types
 
-* [`Hdm::Gitdata`](#hdmgitdata)
-* [`Hdm::Ldap_settings`](#hdmldap_settings)
-* [`Hdm::Puppetdb`](#hdmpuppetdb)
+* [`Hdm::Gitdata`](#hdmgitdata): type to enforce git settings for HDM
+* [`Hdm::Ldap_settings`](#hdmldap_settings): type to enforce ldap settings for HDM
+* [`Hdm::Puppetdb`](#hdmpuppetdb): type to enforce puppetdb settings for HDM
 
 ## Classes
 
@@ -101,7 +101,7 @@ Default value: `3000`
 
 ##### <a name="bind_ip"></a>`bind_ip`
 
-Data type: `Stdlib::IP::Address`
+Data type: `Stdlib::IP::Address::Nosubnet`
 
 The ip address to bind the process to
 
@@ -265,7 +265,7 @@ Default value: `'hiera.yaml'`
 
 ### <a name="hdmgitdata"></a>`Hdm::Gitdata`
 
-The Hdm::Gitdata data type.
+type to enforce git settings for HDM
 
 Alias of
 
@@ -282,7 +282,7 @@ Array[Optional[Struct[
 
 ### <a name="hdmldap_settings"></a>`Hdm::Ldap_settings`
 
-The Hdm::Ldap_settings data type.
+type to enforce ldap settings for HDM
 
 Alias of
 
@@ -298,7 +298,7 @@ Struct[{
 
 ### <a name="hdmpuppetdb"></a>`Hdm::Puppetdb`
 
-The Hdm::Puppetdb data type.
+type to enforce puppetdb settings for HDM
 
 Alias of
 

@@ -111,7 +111,7 @@ class hdm (
   Boolean                       $manage_docker         = true,
   String[1]                     $version               = 'main',
   Stdlib::Port                  $port                  = 3000,
-  Stdlib::IP::Address           $bind_ip               = '0.0.0.0',
+  Stdlib::IP::Address::Nosubnet $bind_ip               = '0.0.0.0',
   String[1]                     $hostname              = $facts['networking']['fqdn'],
   Stdlib::Unixpath              $hdm_path              = '/etc/hdm',
   String[1]                     $user                  = 'hdm',

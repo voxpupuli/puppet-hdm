@@ -1,3 +1,4 @@
+# @summary type to enforce puppetdb settings for HDM
 type Hdm::Puppetdb = Struct[
   {
     server           => Stdlib::Httpurl,
