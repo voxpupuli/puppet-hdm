@@ -287,7 +287,13 @@ The Hdm::Ldap_settings data type.
 Alias of
 
 ```puppet
-Struct[=>]
+Struct[{
+    Optional[host]             => Stdlib::Host,
+    Optional[port]             => Stdlib::Port,
+    Optional[base_dn]          => String[1],
+    Optional[bind_dn]          => String[1],
+    Optional[bind_dn_password] => String[1],
+  }]
 ```
 
 ### <a name="hdmpuppetdb"></a>`Hdm::Puppetdb`
