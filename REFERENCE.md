@@ -15,6 +15,12 @@
 * `hdm::docker`: A short summary of the purpose of this class
 * `hdm::puppet_ruby`: A short summary of the purpose of this class
 
+### Data types
+
+* [`Hdm::Gitdata`](#hdmgitdata)
+* [`Hdm::Ldap_settings`](#hdmldap_settings)
+* [`Hdm::Puppetdb`](#hdmpuppetdb)
+
 ## Classes
 
 ### <a name="hdm"></a>`hdm`
@@ -95,7 +101,7 @@ Default value: `3000`
 
 ##### <a name="bind_ip"></a>`bind_ip`
 
-Data type: `String[1]`
+Data type: `Stdlib::IP::Address`
 
 The ip address to bind the process to
 
@@ -143,7 +149,7 @@ Default value: `'hdm'`
 
 ##### <a name="puppetdb_settings"></a>`puppetdb_settings`
 
-Data type: `Hash`
+Data type: `Hdm::Puppetdb`
 
 A hash to provide information on how
 HDM can connect to puppetdb
@@ -159,6 +165,7 @@ Using PE token:
   {
     'server'           => 'https://localhost:8081',
     'token'            => '/etc/hdm/puppetdb.token',
+    'cacert'           => '<path to cacert>',
   }
 ```
 Using SSL cert:
@@ -209,7 +216,7 @@ Default value: ``true``
 
 ##### <a name="git_data"></a>`git_data`
 
-Data type: `Array`
+Data type: `Hdm::Gitdata`
 
 Configure several settings related to the option
 to modify data via Webfrontend. WARNING!! untested!!
@@ -229,7 +236,7 @@ Default value: `[]`
 
 ##### <a name="ldap_settings"></a>`ldap_settings`
 
-Data type: `Hash`
+Data type: `Hdm::Ldap_settings`
 
 Config for LDAP integration
 Needs the following Hash:
@@ -253,4 +260,54 @@ Set to another file if you
 want HDM to not use hiera.yaml.
 
 Default value: `'hiera.yaml'`
+
+## Data types
+
+### <a name="hdmgitdata"></a>`Hdm::Gitdata`
+
+The Hdm::Gitdata data type.
+
+Alias of
+
+```puppet
+Array[Optional[Struct[
+    {
+      datadir                => Stdlib::Unixpath,
+      git_url                => String[1],
+      path_in_repo           => String[1],
+      Optional[ssh_priv_key] => String[1],
+    }
+  ]]]
+```
+
+### <a name="hdmldap_settings"></a>`Hdm::Ldap_settings`
+
+The Hdm::Ldap_settings data type.
+
+Alias of
+
+```puppet
+Struct[=>]
+```
+
+### <a name="hdmpuppetdb"></a>`Hdm::Puppetdb`
+
+The Hdm::Puppetdb data type.
+
+Alias of
+
+```puppet
+Struct[{
+    server           => Stdlib::Httpurl,
+    Optional[pem]    => Struct[
+      {
+        key     => Stdlib::Unixpath,
+        cert    => Stdlib::Unixpath,
+        ca_file => Stdlib::Unixpath,
+      }
+    ],
+    Optional[token]  => Stdlib::Unixpath,
+    Optional[cacert] => Stdlib::Unixpath,
+  }]
+```
 
