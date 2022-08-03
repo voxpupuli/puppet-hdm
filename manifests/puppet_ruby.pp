@@ -14,7 +14,7 @@ class hdm::puppet_ruby {
   group { $hdm::group:
     ensure => present,
   }
-  user { $hdm::user:
+  user { $hdm::user:
     ensure => present,
     gid    => $hdm::group,
     shell  => '/sbin/nologin',
@@ -51,7 +51,7 @@ class hdm::puppet_ruby {
   }
   systemd::unit_file { 'hdm.service':
     content => epp('hdm/hdm.service.epp'),
-    enable => true,
-    active => true,
+    enable  => true,
+    active  => true,
   }
 }

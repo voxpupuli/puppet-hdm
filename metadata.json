@@ -1,10 +1,10 @@
 {
   "name": "betadots-hdm",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "betadots GmbH",
-  "summary": "",
+  "summary": "Manage Hiera Data Manager application",
   "license": "Apache-2.0",
-  "source": "",
+  "source": "https://github.com/betadots/puppet-hdm.git",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",

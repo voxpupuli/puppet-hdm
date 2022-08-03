@@ -51,6 +51,6 @@ class hdm::docker {
     hostname         => $facts['networking']['fqdn'],
     ports            => [$hdm::port],
     net              => 'host',
-    extra_parameters => ["--user ${hdm::user}:${hdm::group}"]
+    extra_parameters => ["--user ${hdm::user}:${hdm::group}"],
   }
 }
