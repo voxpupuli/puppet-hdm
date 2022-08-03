@@ -3,4 +3,9 @@
 ---
 fixtures:
   forge_modules:
-#     stdlib: "puppetlabs/stdlib"
+    stdlib: "puppetlabs/stdlib"
+    docker: "puppetlabs/docker"
+    apt: "puppetlabs/apt"
+    yumrepo: "puppetlabs/yumrepo_core"
+    vcsrepo: "puppetlabs/vcsrepo"
+    systemd: "puppet/systemd"

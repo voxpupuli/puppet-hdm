@@ -1,10 +1,10 @@
 {
   "name": "betadots-hdm",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "betadots GmbH",
-  "summary": "",
+  "summary": "Manage Hiera Data Manager application",
   "license": "Apache-2.0",
-  "source": "",
+  "source": "https://github.com/betadots/puppet-hdm.git",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
@@ -20,14 +20,14 @@
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
         "7",
-	"8"
+        "8"
       ]
     },
     {
       "operatingsystem": "OracleLinux",
       "operatingsystemrelease": [
         "7",
-	"8"
+        "8"
       ]
     },
     {
@@ -46,21 +46,14 @@
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "10",
-	"11"
+        "11"
       ]
     },
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
         "18.04",
-	"20.04"
-      ]
-    },
-    {
-      "operatingsystem": "SLES",
-      "operatingsystemrelease": [
-	"12",
-        "15"
+        "20.04"
       ]
     }
   ],
@@ -70,7 +63,7 @@
       "version_requirement": ">= 6.21.0 < 8.0.0"
     }
   ],
-  "pdk-version": "2.4.0",
-  "template-url": "pdk-default#2.4.0",
-  "template-ref": "tags/2.4.0-0-gfa6b6d2"
+  "pdk-version": "2.5.0",
+  "template-url": "pdk-default#2.5.0",
+  "template-ref": "tags/2.5.0-0-g369d483"
 }
