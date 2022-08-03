@@ -34,15 +34,20 @@
 #   HDM can connect to puppetdb
 #   The following options are possible:
 #   Plain text (default)
+#   ```
 #     {
 #       'server'           => 'http://localhost:8080',
 #     }
+#   ```
 #   Using PE token:
+#   ```
 #     {
 #       'server'           => 'https://localhost:8081',
 #       'token'            => '/etc/hdm/puppetdb.token',
 #     }
+#   ```
 #   Using SSL cert:
+#   ```
 #     {
 #       'server'           => 'http://localhost:8081',
 #       'pem'              => {
@@ -51,6 +56,7 @@
 #         'ca_file'        => '/etc/hdm/ssl.ca',
 #       },
 #     }
+#   ```
 #
 # @param puppet_code_dir The path where HDM can find deployed 
 #   Puppet environments (similar to puppet config code_dir)
@@ -69,6 +75,7 @@
 # @param git_data Configure several settings related to the option
 #   to modify data via Webfrontend. WARNING!! untested!!
 #   Required Array of hash data:
+#   ```
 #     [
 #       {
 #         'datadir'        => 'modules/hieradata/data',
@@ -77,9 +84,11 @@
 #         'ssh_priv_key'   => '.ssh/id_rsa',
 #       }
 #     ]
+#   ```
 #
 # @param ldap_settings Config for LDAP integration
 #   Needs the following Hash:
+#   ```
 #     {
 #       'host'             => 'localhost',
 #       'port'             => 389,
@@ -87,6 +96,7 @@
 #       'bind_dn'          => 'cn=admin,dc=nodomain',
 #       'bind_dn_password' => 'openldap',
 #     }
+#   ```
 #
 # @param hdm_hiera_config_file Set to another file if you 
 #   want HDM to not use hiera.yaml.

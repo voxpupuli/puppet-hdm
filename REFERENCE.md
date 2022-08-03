@@ -140,15 +140,20 @@ A hash to provide information on how
 HDM can connect to puppetdb
 The following options are possible:
 Plain text (default)
+```
   {
     'server'           => 'http://localhost:8080',
   }
+```
 Using PE token:
+```
   {
     'server'           => 'https://localhost:8081',
     'token'            => '/etc/hdm/puppetdb.token',
   }
+```
 Using SSL cert:
+```
   {
     'server'           => 'http://localhost:8081',
     'pem'              => {
@@ -157,6 +162,7 @@ Using SSL cert:
       'ca_file'        => '/etc/hdm/ssl.ca',
     },
   }
+```
 
 Default value: `{ 'server' => 'http://localhost:8080', }`
 
@@ -199,6 +205,7 @@ Data type: `Array`
 Configure several settings related to the option
 to modify data via Webfrontend. WARNING!! untested!!
 Required Array of hash data:
+```
   [
     {
       'datadir'        => 'modules/hieradata/data',
@@ -207,6 +214,7 @@ Required Array of hash data:
       'ssh_priv_key'   => '.ssh/id_rsa',
     }
   ]
+```
 
 Default value: `[]`
 
@@ -216,6 +224,7 @@ Data type: `Hash`
 
 Config for LDAP integration
 Needs the following Hash:
+```
   {
     'host'             => 'localhost',
     'port'             => 389,
@@ -223,6 +232,7 @@ Needs the following Hash:
     'bind_dn'          => 'cn=admin,dc=nodomain',
     'bind_dn_password' => 'openldap',
   }
+```
 
 Default value: `{}`
 
