@@ -30,7 +30,7 @@ class hdm::puppet_ruby {
   }
 
   exec { 'bundle install':
-    command => 'bundle install --path vendor --jobs $(npoc) && touch .bundle_install_finished',
+    command => 'bundle install --path vendor --jobs $(nproc) && touch .bundle_install_finished',
     path    => "${facts['path']}:/opt/puppetlabs/puppet/bin",
     cwd     => $hdm::hdm_path,
     creates => "${hdm::hdm_path}/.bundle_install_finished",
