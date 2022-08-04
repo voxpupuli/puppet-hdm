@@ -51,20 +51,19 @@ class hdm::docker {
   }
 
   docker::run { 'hdm':
-    image            => "ghcr.io/betadots/hdm:${hdm::version}",
-    env              => [
+    image    => "ghcr.io/betadots/hdm:${hdm::version}",
+    env      => [
       "TZ=${$hdm::timezone}",
       "RAILS_DEVELOPMENT_HOSTS=${hdm::hostname}",
     ],
-    volumes          => [
+    volumes  => [
       "${hdm::hdm_path}:${hdm::hdm_path}",
       "${hdm::puppet_code_dir}:${hdm::puppet_code_dir}:ro",
       "${hdm::hdm_path}/hdm.yml:/hdm/config/hdm.yml:ro",
       "${hdm::hdm_path}/database.yml:/hdm/config/database.yml:ro",
     ],
-    hostname         => $hdm::hostname,
-    ports            => [$hdm::port],
-    net              => 'host',
-    # extra_parameters => ["--user ${hdm::user}:${hdm::group}"],
+    hostname => $hdm::hostname,
+    ports    => [$hdm::port],
+    net      => 'host',
   }
 }
