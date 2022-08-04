@@ -45,6 +45,7 @@ The following parameters are available in the `hdm` class:
 * [`port`](#port)
 * [`bind_ip`](#bind_ip)
 * [`hostname`](#hostname)
+* [`timezone`](#timezone)
 * [`hdm_path`](#hdm_path)
 * [`git_url`](#git_url)
 * [`user`](#user)
@@ -114,6 +115,14 @@ Data type: `String[1]`
 The hostname to use
 
 Default value: `$facts['networking']['fqdn']`
+
+##### <a name="timezone"></a>`timezone`
+
+Data type: `String[1]`
+
+THe timezone to use when running with docker
+
+Default value: `$facts['timezone']`
 
 ##### <a name="hdm_path"></a>`hdm_path`
 
