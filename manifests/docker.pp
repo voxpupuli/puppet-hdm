@@ -53,7 +53,7 @@ class hdm::docker {
   docker::run { 'hdm':
     image            => "ghcr.io/betadots/hdm:${hdm::version}",
     env              => [
-      "TZ=${facts['timezone']}",
+      "TZ=${$hdm::timezone}",
       "RAILS_DEVELOPMENT_HOSTS=${hdm::hostname}",
     ],
     volumes          => [
@@ -65,6 +65,6 @@ class hdm::docker {
     hostname         => $hdm::hostname,
     ports            => [$hdm::port],
     net              => 'host',
-    extra_parameters => ["--user ${hdm::user}:${hdm::group}"],
+    # extra_parameters => ["--user ${hdm::user}:${hdm::group}"],
   }
 }
