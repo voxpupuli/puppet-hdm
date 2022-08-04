@@ -12,6 +12,16 @@ class hdm::docker {
     include docker
   }
 
+  group { $hdm::group:
+    ensure => present,
+  }
+
+  user { $hdm::user:
+    ensure => present,
+    gid    => $hdm::group,
+    shell  => '/sbin/nologin',
+  }
+
   $directories = [
     $hdm::hdm_path,
     "${hdm::hdm_path}/certs",
@@ -44,7 +54,7 @@ class hdm::docker {
     image            => "ghcr.io/betadots/hdm:${hdm::version}",
     env              => [
       "TZ=${facts['timezone']}",
-      "RAILS_DEVELOPMENT_HOSTS=${facts['networking']['fqdn']}",
+      "RAILS_DEVELOPMENT_HOSTS=${hdm::hostname}",
     ],
     volumes          => [
       "${hdm::hdm_path}:${hdm::hdm_path}",
