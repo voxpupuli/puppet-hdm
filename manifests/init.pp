@@ -24,6 +24,8 @@
 #
 # @param hostname The hostname to use
 #
+# @param timezone THe timezone to use when running with docker
+#
 # @param hdm_path Path where one wants to install and configure hdm
 #
 # @param git_url The git URL to clone the hdm repo from
@@ -113,6 +115,7 @@ class hdm (
   Stdlib::Port                  $port                  = 3000,
   Stdlib::IP::Address::Nosubnet $bind_ip               = '0.0.0.0',
   String[1]                     $hostname              = $facts['networking']['fqdn'],
+  String[1]                     $timezone              = $facts['timezone'],
   Stdlib::Unixpath              $hdm_path              = '/etc/hdm',
   String[1]                     $user                  = 'hdm',
   String[1]                     $group                 = 'hdm',
