@@ -9,13 +9,5 @@ describe 'hdm' do
 
       it { is_expected.to compile }
     end
-    context "on #{os} using puppet ruby" do
-      let(:facts) { os_facts }
-      let(:params) do
-        { 'method' => 'puppet-ruby', }
-      end
-
-      it { is_expected.to compile }
-    end
   end
 end
