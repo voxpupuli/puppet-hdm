@@ -3,7 +3,8 @@
 # This class controls the installation of HDM
 #
 # @param method Select the installation method.
-#    Avalable methods: docker or puppet-ruby
+#    Avalable methods: docker 
+#    The puppet-ruby implenentation is not yet working.
 #    When using puppet-ruby we install bundler gem into 
 #    the puppet-agent ruby installation.
 #
@@ -109,7 +110,7 @@
 # @example
 #   include hdm
 class hdm (
-  Enum['docker', 'puppet-ruby'] $method                = 'docker',
+  Enum['docker']                $method                = 'docker',
   Boolean                       $manage_docker         = true,
   String[1]                     $version               = 'main',
   Stdlib::Port                  $port                  = 3000,

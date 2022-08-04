@@ -60,10 +60,11 @@ The following parameters are available in the `hdm` class:
 
 ##### <a name="method"></a>`method`
 
-Data type: `Enum['docker', 'puppet-ruby']`
+Data type: `Enum['docker']`
 
 Select the installation method.
-Avalable methods: docker or puppet-ruby
+Avalable methods: docker
+The puppet-ruby implenentation is not yet working.
 When using puppet-ruby we install bundler gem into
 the puppet-agent ruby installation.
 
