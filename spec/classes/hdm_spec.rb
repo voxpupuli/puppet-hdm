@@ -9,5 +9,13 @@ describe 'hdm' do
 
       it { is_expected.to compile }
     end
+    context "on #{os} using rvm" do
+      let(:facts) { os_facts }
+      let(:params) {{
+        'method' => 'rvm',
+      }}
+
+      it { is_expected.to compile }
+    end
   end
 end

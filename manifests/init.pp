@@ -3,10 +3,9 @@
 # This class controls the installation of HDM
 #
 # @param method Select the installation method.
-#    Avalable methods: docker 
-#    The puppet-ruby implenentation is not yet working.
-#    When using puppet-ruby we install bundler gem into 
-#    the puppet-agent ruby installation.
+#    Avalable methods: docker, rvm
+#    When using rvm we install rvm into system and add the
+#    bundler gem.
 #
 # @param manage_docker Set to false if this module should NOT
 #   also include the docker class (without any arguments)
@@ -18,6 +17,9 @@
 # @param version Select the version to deploy.
 #   Version is the image tag name when using docker and
 #   the git tag when using puppet-ruby
+#
+# @param ruby_version Select the ruby version when installing using rvm
+#   Please check [hdm ruby version requirement](https://github.com/betadots/hdm/blob/main/.ruby-version)
 #
 # @param port The port where HDM should run on
 #
@@ -110,9 +112,10 @@
 # @example
 #   include hdm
 class hdm (
-  Enum['docker']                $method                = 'docker',
+  Enum['docker', 'rvm']         $method                = 'docker',
   Boolean                       $manage_docker         = true,
   String[1]                     $version               = 'main',
+  String[1]                     $ruby_version          = '3.1.2',
   Stdlib::Port                  $port                  = 3000,
   Stdlib::IP::Address::Nosubnet $bind_ip               = '0.0.0.0',
   String[1]                     $hostname              = $facts['networking']['fqdn'],
@@ -133,8 +136,8 @@ class hdm (
     'docker': {
       include hdm::docker
     }
-    'puppet-ruby': {
-      include hdm::puppet_ruby
+    'rvm': {
+      include hdm::rvm
     }
     default: {
       fail('Unknown HDM installation method.')
