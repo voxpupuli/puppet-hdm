@@ -36,7 +36,7 @@ class hdm::rvm {
     require      => Rvm_system_ruby["ruby-${hdm::ruby_version}"],
   }
 
-  # Fix for old g++
+  # Fix for old g++ and sqlite3
   case $facts['os']['family'] {
     'RedHat': {
       if versioncmp($facts['os']['release']['major'], '8') < 0 {
@@ -48,6 +48,16 @@ class hdm::rvm {
           ensure => present,
         }
         $exec_prefix = 'scl enable devtoolset-7 '
+        package { 'sqlite-devel':
+          ensure   => '3.8.11',
+          source   => 'https://kojipkgs.fedoraproject.org//packages/sqlite/3.8.11/1.fc21/x86_64/sqlite-devel-3.8.11-1.fc21.x86_64.rpm',
+          provider => 'rpm',
+        }
+        package { 'sqlite':
+          ensure   => '3.8.11',
+          source   => 'https://kojipkgs.fedoraproject.org//packages/sqlite/3.8.11/1.fc21/x86_64/sqlite-3.8.11-1.fc21.x86_64.rpm',
+          provider => 'rpm',
+        }
       } else {
         $exec_prefix = ''
       }
@@ -94,7 +104,7 @@ class hdm::rvm {
   }
 
   exec { 'bundle db:setup':
-    command  => "source $(rvm ${hdm::ruby_version} do rvm env --path) && rvm ${hdm::ruby_version} do 'bundle exec rails db:setup' && touch .bundle_db_setup_finished",
+    command  => "source $(rvm ${hdm::ruby_version} do rvm env --path) && rvm ${hdm::ruby_version} do bundle exec rails db:setup && touch .bundle_db_setup_finished",
     cwd      => $hdm::hdm_path,
     path     => "/usr/local/rvm/bin:${facts['path']}",
     creates  => "${hdm::hdm_path}/.bundle_db_setup_finished",
