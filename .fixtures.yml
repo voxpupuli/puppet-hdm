@@ -9,3 +9,5 @@ fixtures:
     yumrepo: "puppetlabs/yumrepo_core"
     vcsrepo: "puppetlabs/vcsrepo"
     systemd: "puppet/systemd"
+    rvm: "puppet/rvm"
+    gnupg: "golja/gnupg"
