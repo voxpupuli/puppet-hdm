@@ -4,10 +4,12 @@ Requires=network.target
 
 [Service]
 Type=simple
-User=<%= $hdm::user %>
-Group=<%= $hdm::group %>
+#User=<%= $hdm::user %>
+#Group=<%= $hdm::group %>
+User=root
+Group=root
 WorkingDirectory=<%= $hdm::hdm_path %>
-Environment="PATH=/usr/local/rvm/bin:<%= $facts['path'] %>"
+Environment="PATH=/usr/local/rvm/bin:<%= $facts['path'] %>,RAILS_DEVELOPMENT_HOSTS=<%= ${hdm::hostname} %>"
 ExecStart=/bin/bash -lc 'source $(rvm <%= $hdm::ruby_version %> do rvm env --path) && bundle exec rails server -b <%= $hdm::bind_ip %> -p <%= $hdm::port %>'
 TimeoutSec=30
 RestartSec=15s
