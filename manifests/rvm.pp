@@ -44,21 +44,21 @@ class hdm::rvm {
   }
 
   exec { 'bundle config path':
-    command => 'bundle config set --local path \'vendor/bundle\'',
+    command => "rvm use ${hdm::ruby_version} && bundle config set --local path 'vendor/bundle'",
     cwd     => $hdm::hdm_path,
     path    => $facts['path'],
     unless  => 'grep vendor/bundle .bundle/config',
   }
 
   exec { 'bundle config development':
-    command => 'bundle config set --local with \'development\'',
+    command => "rvm use ${hdm::ruby_version} && bundle config set --local with 'development'",
     cwd     => $hdm::hdm_path,
     path    => $facts['path'],
     unless  => 'grep development .bundle/config',
   }
 
   exec { 'bundle install':
-    command => 'bundle install --jobs $(nproc) && touch .bundle_install_finished',
+    command => "rvm use ${hdm::ruby_version} && bundle install --jobs $(nproc) && touch .bundle_install_finished",
     cwd     => $hdm::hdm_path,
     path    => $facts['path'],
     creates => "${hdm::hdm_path}/.bundle_install_finished",
