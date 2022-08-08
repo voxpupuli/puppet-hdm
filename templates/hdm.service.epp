@@ -7,8 +7,8 @@ Type=simple
 User=<%= $hdm::user %>
 Group=<%= $hdm::group %>
 WorkingDirectory=<%= $hdm::hdm_path %>
-# ExecStart=/bin/bash -lc 'bundle exec rails server -e production --bind 0.0.0.0 --port 80'
-ExecStart=/bin/bash -lc 'bundle exec rails server -b <%= $hdm::bind_ip %> -p <%= $hdm::port %>'
+Environment="PATH=/usr/local/rvm/bin:<%= $facts['path'] %>"
+ExecStart=/bin/bash -lc 'source $(rvm <%= $hdm::ruby_version %> do rvm env --path) && bundle exec rails server -b <%= $hdm::bind_ip %> -p <%= $hdm::port %>'
 TimeoutSec=30
 RestartSec=15s
 Restart=always
