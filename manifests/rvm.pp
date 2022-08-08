@@ -107,7 +107,7 @@ class hdm::rvm {
   }
 
   exec { 'bundle rails credentials':
-    command  => "source $(rvm ${hdm::ruby_version} do rvm env --path) && rvm ${hdm::ruby_version} do \"echo 'secret' | EDITOR='vim' bundle exec rails credentials:edit\"",
+    command  => "source $(rvm ${hdm::ruby_version} do rvm env --path) && rvm ${hdm::ruby_version} do echo 'secret' | EDITOR='vim' bundle exec rails credentials:edit",
     cwd      => $hdm::hdm_path,
     path     => "/usr/local/rvm/bin:${facts['path']}",
     creates  => "${hdm::hdm_path}/config/credentials.yml.enc",
