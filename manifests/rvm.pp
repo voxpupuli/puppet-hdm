@@ -46,21 +46,21 @@ class hdm::rvm {
   exec { 'bundle config path':
     command => "rvm use ${hdm::ruby_version} && bundle config set --local path 'vendor/bundle'",
     cwd     => $hdm::hdm_path,
-    path    => $facts['path'],
+    path    => "/usr/local/rvm/bin:${facts['path']}",
     unless  => 'grep vendor/bundle .bundle/config',
   }
 
   exec { 'bundle config development':
     command => "rvm use ${hdm::ruby_version} && bundle config set --local with 'development'",
     cwd     => $hdm::hdm_path,
-    path    => $facts['path'],
+    path    => "/usr/local/rvm/bin:${facts['path']}",
     unless  => 'grep development .bundle/config',
   }
 
   exec { 'bundle install':
     command => "rvm use ${hdm::ruby_version} && bundle install --jobs $(nproc) && touch .bundle_install_finished",
     cwd     => $hdm::hdm_path,
-    path    => $facts['path'],
+    path    => "/usr/local/rvm/bin:${facts['path']}",
     creates => "${hdm::hdm_path}/.bundle_install_finished",
   }
 
@@ -70,16 +70,16 @@ class hdm::rvm {
   }
 
   exec { 'bundle db:setup':
-    command => 'bundle exec rails db:setup && touch .bundle_db_setup_finished',
+    command => "rvm use ${hdm::ruby_version} && bundle exec rails db:setup && touch .bundle_db_setup_finished",
     cwd     => $hdm::hdm_path,
-    path    => $facts['path'],
+    path    => "/usr/local/rvm/bin:${facts['path']}",
     creates => "${hdm::hdm_path}/.bundle_db_setup_finished",
   }
 
   exec { 'bundle rails credentials':
-    command => 'echo "secret" | EDITOR="vim" bundle exec rails credentials:edit',
+    command => "rvm use ${hdm::ruby_version} && echo 'secret' | EDITOR='vim' bundle exec rails credentials:edit",
     cwd     => $hdm::hdm_path,
-    path    => $facts['path'],
+    path    => "/usr/local/rvm/bin:${facts['path']}",
     creates => "${hdm::hdm_path}/config/credentials.yml.enc",
   }
 
