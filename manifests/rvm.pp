@@ -48,15 +48,10 @@ class hdm::rvm {
           ensure => present,
         }
         $exec_prefix = 'scl enable devtoolset-7 '
-        package { 'sqlite-devel':
-          ensure   => '3.8.11',
-          source   => 'https://kojipkgs.fedoraproject.org//packages/sqlite/3.8.11/1.fc21/x86_64/sqlite-devel-3.8.11-1.fc21.x86_64.rpm',
-          provider => 'rpm',
-        }
-        package { 'sqlite':
-          ensure   => '3.8.11',
-          source   => 'https://kojipkgs.fedoraproject.org//packages/sqlite/3.8.11/1.fc21/x86_64/sqlite-3.8.11-1.fc21.x86_64.rpm',
-          provider => 'rpm',
+        exec { 'update sqlite':
+          command => 'yum install -y https://kojipkgs.fedoraproject.org//packages/sqlite/3.8.11/1.fc21/x86_64/sqlite-devel-3.8.11-1.fc21.x86_64.rpm https://kojipkgs.fedoraproject.org//packages/sqlite/3.8.11/1.fc21/x86_64/sqlite-3.8.11-1.fc21.x86_64.rpm',
+          path    => $facts['path'],
+          unless  => 'rpm -q sqlite | grep 3.8',
         }
       } else {
         $exec_prefix = ''
