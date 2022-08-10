@@ -1,9 +1,6 @@
-# @summary A short summary of the purpose of this class
+# @summary Manage HDM using Docker
 #
-# A description of what this class does
-#
-# @example
-#   include hdm::docker
+# This class installs docker and runs the HDM container.
 #
 # @api private
 #

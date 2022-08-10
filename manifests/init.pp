@@ -3,7 +3,7 @@
 # This class controls the installation of HDM
 #
 # @param method Select the installation method.
-#    Avalable methods: docker, rvm
+#    Available methods: docker, rvm
 #    When using rvm we install rvm into system and add the
 #    bundler gem.
 #
@@ -16,7 +16,7 @@
 #
 # @param version Select the version to deploy.
 #   Version is the image tag name when using docker and
-#   the git tag when using puppet-ruby
+#   the git tag when using rvm
 #
 # @param ruby_version Select the ruby version when installing using rvm
 #   Please check [hdm ruby version requirement](https://github.com/betadots/hdm/blob/main/.ruby-version)
@@ -25,7 +25,7 @@
 #
 # @param bind_ip The ip address to bind the process to
 #
-# @param hostname The hostname to use
+# @param hostname The HDM webservice hostname
 #
 # @param timezone THe timezone to use when running with docker
 #
@@ -57,7 +57,7 @@
 #   Using SSL cert:
 #   ```
 #     {
-#       'server'           => 'http://localhost:8081',
+#       'server'           => 'https://localhost:8081',
 #       'pem'              => {
 #         'key'            => '/etc/hdm/ssl.key',
 #         'cert'           => '/etc/hdm/ssl.cert',
@@ -76,7 +76,8 @@
 #   not be set individually.
 #
 # @param read_only Set to false if you want the ability to 
-#   change data via HDM webfrontend. WARNING!! untested!!!
+#   change data via HDM webfrontend. 
+#   WARNING!! setting to true is untested!!!
 #   Changes are stored via GIT.
 #   Setting this to true also needs the git_data Array parameter
 #
