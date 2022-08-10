@@ -1,4 +1,9 @@
-# class hdm::rvm
+# @summary Manage HDM using RVM
+#
+# This class installs the required Ruby version using RVM
+# and runs HDM as systemd service
+#
+# @api private
 class hdm::rvm {
   group { $hdm::group:
     ensure => present,

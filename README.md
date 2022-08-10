@@ -17,7 +17,7 @@ This module manages [HDM](https://github.com/betadots/hdm) installation.
 
 HDM can be installed on Puppet Server or on any other system with PuppetDB access and Puppet code deployed.
 
-This module allows you to either make use of the HDM Docker container or to install HDM using the Puppet Agent Ruby installation.
+This module allows you to either make use of the HDM Docker container or to install HDM using RVM.
 
 ## Setup
 
@@ -29,8 +29,10 @@ If you want to make use of the docker container, you need the following module:
 
 - puppetlabs/docker - min version 4.4.0
 
-If you want to install HDM using Puppet Ruby, you need the following modules:
+If you want to install HDM using RVM, you need the following modules:
 
+- puppet/rvm - min version 2.0.0
+- golja/gnupg - min version 1.2.3
 - puppetlabs/vcsrepo - min version 5.2.0
 - puppet/systemd     - min version 3.10.0
 

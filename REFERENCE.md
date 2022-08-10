@@ -12,8 +12,8 @@
 
 #### Private Classes
 
-* `hdm::docker`: A short summary of the purpose of this class
-* `hdm::puppet_ruby`: A short summary of the purpose of this class
+* `hdm::docker`: Manage HDM using Docker
+* `hdm::rvm`: Manage HDM using RVM
 
 ### Data types
 
@@ -42,6 +42,7 @@ The following parameters are available in the `hdm` class:
 * [`method`](#method)
 * [`manage_docker`](#manage_docker)
 * [`version`](#version)
+* [`ruby_version`](#ruby_version)
 * [`port`](#port)
 * [`bind_ip`](#bind_ip)
 * [`hostname`](#hostname)
@@ -60,13 +61,12 @@ The following parameters are available in the `hdm` class:
 
 ##### <a name="method"></a>`method`
 
-Data type: `Enum['docker']`
+Data type: `Enum['docker', 'rvm']`
 
 Select the installation method.
-Avalable methods: docker
-The puppet-ruby implenentation is not yet working.
-When using puppet-ruby we install bundler gem into
-the puppet-agent ruby installation.
+Available methods: docker, rvm
+When using rvm we install rvm into system and add the
+bundler gem.
 
 Default value: `'docker'`
 
@@ -89,9 +89,18 @@ Data type: `String[1]`
 
 Select the version to deploy.
 Version is the image tag name when using docker and
-the git tag when using puppet-ruby
+the git tag when using rvm
 
 Default value: `'main'`
+
+##### <a name="ruby_version"></a>`ruby_version`
+
+Data type: `String[1]`
+
+Select the ruby version when installing using rvm
+Please check [hdm ruby version requirement](https://github.com/betadots/hdm/blob/main/.ruby-version)
+
+Default value: `'3.1.2'`
 
 ##### <a name="port"></a>`port`
 
@@ -113,7 +122,7 @@ Default value: `'0.0.0.0'`
 
 Data type: `String[1]`
 
-The hostname to use
+The HDM webservice hostname
 
 Default value: `$facts['networking']['fqdn']`
 
@@ -181,7 +190,7 @@ Using PE token:
 Using SSL cert:
 ```
   {
-    'server'           => 'http://localhost:8081',
+    'server'           => 'https://localhost:8081',
     'pem'              => {
       'key'            => '/etc/hdm/ssl.key',
       'cert'           => '/etc/hdm/ssl.cert',
@@ -218,7 +227,8 @@ Default value: ``false``
 Data type: `Boolean`
 
 Set to false if you want the ability to
-change data via HDM webfrontend. WARNING!! untested!!!
+change data via HDM webfrontend.
+WARNING!! setting to true is untested!!!
 Changes are stored via GIT.
 Setting this to true also needs the git_data Array parameter
 
