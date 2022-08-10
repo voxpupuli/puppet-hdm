@@ -1,6 +1,6 @@
 {
   "name": "betadots-hdm",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "betadots GmbH",
   "summary": "Manage Hiera Data Manager application",
   "license": "Apache-2.0",
