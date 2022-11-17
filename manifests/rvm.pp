@@ -5,6 +5,7 @@
 #
 # @api private
 class hdm::rvm {
+  assert_private()
   group { $hdm::group:
     ensure => present,
   }

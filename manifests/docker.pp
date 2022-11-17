@@ -5,6 +5,7 @@
 # @api private
 #
 class hdm::docker {
+  assert_private()
   if $hdm::manage_docker {
     include docker
   }
