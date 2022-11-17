@@ -18,8 +18,18 @@ describe 'hdm' do
       it { is_expected.to be_running }
     end
 
+    # rubocop:disable RSpec/RepeatedExampleGroupBody
     describe command('journalctl --unit docker-hdm --lines 500 --no-pager') do
       its(:exit_status) { is_expected.to eq 0 }
     end
+
+    describe command('docker container ls --all') do
+      its(:exit_status) { is_expected.to eq 0 }
+    end
+
+    describe command('docker image ls --all') do
+      its(:exit_status) { is_expected.to eq 0 }
+    end
+    # rubocop:enable RSpec/RepeatedExampleGroupBody
   end
 end
