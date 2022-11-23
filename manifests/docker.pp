@@ -14,10 +14,14 @@ class hdm::docker {
     ensure => present,
   }
 
+  $shell = $facts['os']['family'] ? {
+    'Debian' => '/usr/sbin/nologin',
+    'RedHat' => '/sbin/nologin',
+  }
   user { $hdm::user:
     ensure => present,
     gid    => $hdm::group,
-    shell  => '/sbin/nologin',
+    shell  => $shell,
   }
 
   $directories = [
