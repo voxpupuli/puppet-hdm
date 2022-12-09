@@ -37,6 +37,7 @@ class hdm::docker {
   file { "${hdm::hdm_path}/hdm.yml":
     ensure  => file,
     content => epp('hdm/hdm.yml.epp'),
+    notify  => Service['docker-hdm'],
   }
 
   file { "${hdm::hdm_path}/database.yml":
