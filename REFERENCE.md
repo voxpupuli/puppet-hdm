@@ -267,6 +267,7 @@ Needs the following Hash:
     'base_dn'          => 'ou=hdm,dc=nodomain',
     'bind_dn'          => 'cn=admin,dc=nodomain',
     'bind_dn_password' => 'openldap',
+    'ldaps'            =>  false,
   }
 ```
 
@@ -313,6 +314,7 @@ Struct[{
     Optional[base_dn]          => String[1],
     Optional[bind_dn]          => String[1],
     Optional[bind_dn_password] => String[1],
+    'ldaps'                    => Boolean,
   }]
 ```
 

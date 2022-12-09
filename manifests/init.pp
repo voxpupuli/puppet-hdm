@@ -104,6 +104,7 @@
 #       'base_dn'          => 'ou=hdm,dc=nodomain',
 #       'bind_dn'          => 'cn=admin,dc=nodomain',
 #       'bind_dn_password' => 'openldap',
+#       'ldaps'            =>  false,
 #     }
 #   ```
 #
