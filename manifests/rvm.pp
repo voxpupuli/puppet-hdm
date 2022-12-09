@@ -126,5 +126,4 @@ class hdm::rvm {
     enable  => true,
     active  => true,
   }
-
 }
