@@ -102,6 +102,7 @@ class hdm::rvm {
   file { "${hdm::hdm_path}/config/hdm.yml":
     ensure  => file,
     content => epp('hdm/hdm.yml.epp'),
+    notify  => Service['hdm.service'],
   }
 
   exec { 'bundle db:setup':

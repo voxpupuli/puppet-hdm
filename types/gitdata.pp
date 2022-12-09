@@ -1,6 +1,6 @@
 # @summary type to enforce git settings for HDM
 type Hdm::Gitdata = Array[
- Struct[
+  Struct[
     {
       datadir                => Stdlib::Unixpath,
       git_url                => String[1],
