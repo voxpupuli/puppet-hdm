@@ -6,5 +6,6 @@ type Hdm::Ldap_settings = Struct[
     Optional[base_dn]          => String[1],
     Optional[bind_dn]          => String[1],
     Optional[bind_dn_password] => String[1],
+    'ldaps'                    => Boolean,
   }
 ]

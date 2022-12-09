@@ -236,7 +236,7 @@ Default value: ``true``
 
 ##### <a name="git_data"></a>`git_data`
 
-Data type: `Hdm::Gitdata`
+Data type: `Optional[Hdm::Gitdata]`
 
 Configure several settings related to the option
 to modify data via Webfrontend. WARNING!! untested!!
@@ -252,11 +252,11 @@ Required Array of hash data:
   ]
 ```
 
-Default value: `[]`
+Default value: ``undef``
 
 ##### <a name="ldap_settings"></a>`ldap_settings`
 
-Data type: `Hdm::Ldap_settings`
+Data type: `Optional[Hdm::Ldap_settings]`
 
 Config for LDAP integration
 Needs the following Hash:
@@ -267,10 +267,11 @@ Needs the following Hash:
     'base_dn'          => 'ou=hdm,dc=nodomain',
     'bind_dn'          => 'cn=admin,dc=nodomain',
     'bind_dn_password' => 'openldap',
+    'ldaps'            =>  false,
   }
 ```
 
-Default value: `{}`
+Default value: ``undef``
 
 ##### <a name="hdm_hiera_config_file"></a>`hdm_hiera_config_file`
 
@@ -313,6 +314,7 @@ Struct[{
     Optional[base_dn]          => String[1],
     Optional[bind_dn]          => String[1],
     Optional[bind_dn_password] => String[1],
+    'ldaps'                    => Boolean,
   }]
 ```
 

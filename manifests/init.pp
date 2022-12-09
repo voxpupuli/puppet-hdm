@@ -104,6 +104,7 @@
 #       'base_dn'          => 'ou=hdm,dc=nodomain',
 #       'bind_dn'          => 'cn=admin,dc=nodomain',
 #       'bind_dn_password' => 'openldap',
+#       'ldaps'            =>  false,
 #     }
 #   ```
 #
@@ -113,10 +114,12 @@
 # @example
 #   include hdm
 class hdm (
+  # installation parameter
   Enum['docker', 'rvm']         $method                = 'docker',
   Boolean                       $manage_docker         = true,
   String[1]                     $version               = 'main',
   String[1]                     $ruby_version          = '3.1.2',
+  # required application parameter
   Stdlib::Port                  $port                  = 3000,
   Stdlib::IP::Address::Nosubnet $bind_ip               = '0.0.0.0',
   String[1]                     $hostname              = $facts['networking']['fqdn'],
@@ -128,10 +131,11 @@ class hdm (
   Hdm::Puppetdb                 $puppetdb_settings     = { 'server' => 'http://localhost:8080', },
   Stdlib::Unixpath              $puppet_code_dir       = '/etc/puppetlabs/code',
   String[1]                     $hdm_hiera_config_file = 'hiera.yaml',
+  # additional application parameter
   Boolean                       $allow_encryption      = false,
   Boolean                       $read_only             = true,
-  Hdm::Gitdata                  $git_data              = [],
-  Hdm::Ldap_settings            $ldap_settings         = {},
+  Optional[Hdm::Gitdata]        $git_data              = undef,
+  Optional[Hdm::Ldap_settings]  $ldap_settings         = undef,
 ) {
   case $method {
     'docker': {
