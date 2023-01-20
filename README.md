@@ -1,5 +1,14 @@
 # puppet-hdm
 
+[![Build Status](https://github.com/betadots/puppet-hdm/workflows/CI/badge.svg)](https://github.com/betadots/puppet-hdm/actions?query=workflow%3ACI)
+[![Release](https://github.com/betadots/puppet-hdm/actions/workflows/release.yml/badge.svg)](https://github.com/betadots/puppet-hdm/actions/workflows/release.yml)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/betadots/hdm.svg)](https://forge.puppetlabs.com/puppet/hdm)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/betadots/hdm.svg)](https://forge.puppetlabs.com/betadots/hdm)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/betadots/hdm.svg)](https://forge.puppetlabs.com/betadots/hdm)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/betadots/hdm.svg)](https://forge.puppetlabs.com/betadots/hdm)
+[![puppetmodule.info docs](http://www.puppetmodule.info/images/badge.png)](http://www.puppetmodule.info/m/betadots-hdm)
+[![Apache-2 License](https://img.shields.io/github/license/betadots/puppet-hdm.svg)](LICENSE)
+
 ## Table of Contents
 
 - [puppet-hdm](#puppet-hdm)
