@@ -8,3 +8,6 @@ development:
   <<: *default
   database: <%= $hdm::hdm_path %>/db/development.sqlite3
 
+production:
+  <<: *default
+  database: <%= $hdm::hdm_path %>/db/production.sqlite3
