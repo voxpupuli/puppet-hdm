@@ -14,6 +14,7 @@
 - [puppet-hdm](#puppet-hdm)
   - [Table of Contents](#table-of-contents)
   - [Description](#description)
+  - [Major Update](#major-update)
   - [Setup](#setup)
     - [Setup Requirements](#setup-requirements)
     - [Beginning with hdm](#beginning-with-hdm)
@@ -27,6 +28,17 @@ This module manages [HDM](https://github.com/betadots/hdm) installation.
 HDM can be installed on Puppet Server or on any other system with PuppetDB access and Puppet code deployed.
 
 This module allows you to either make use of the HDM Docker container or to install HDM using RVM.
+
+## Major Update
+
+As of version 1.0.0 the HDM Docker container runs in production mode.
+Existing installations must prepare this change by copying the development.sqlite3 file to production.sqlite3
+
+```shell
+cp /etc/hdm/development.sqlite3 /etc/hdm/production.sqlite3
+```
+
+After the update, the development.sqlite3 file can be deleted.
 
 ## Setup
 

@@ -45,7 +45,7 @@ class hdm::docker {
     content => epp('hdm/database.yml'),
   }
 
-  file { "${hdm::hdm_path}/db/development.sqlite3":
+  file { "${hdm::hdm_path}/db/production.sqlite3":
     ensure => file,
   }
 
