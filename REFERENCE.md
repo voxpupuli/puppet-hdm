@@ -17,9 +17,9 @@
 
 ### Data types
 
-* [`Hdm::Gitdata`](#hdmgitdata): type to enforce git settings for HDM
-* [`Hdm::Ldap_settings`](#hdmldap_settings): type to enforce ldap settings for HDM
-* [`Hdm::Puppetdb`](#hdmpuppetdb): type to enforce puppetdb settings for HDM
+* [`Hdm::Gitdata`](#Hdm--Gitdata): type to enforce git settings for HDM
+* [`Hdm::Ldap_settings`](#Hdm--Ldap_settings): type to enforce ldap settings for HDM
+* [`Hdm::Puppetdb`](#Hdm--Puppetdb): type to enforce puppetdb settings for HDM
 
 ## Classes
 
@@ -39,27 +39,28 @@ include hdm
 
 The following parameters are available in the `hdm` class:
 
-* [`method`](#method)
-* [`manage_docker`](#manage_docker)
-* [`version`](#version)
-* [`ruby_version`](#ruby_version)
-* [`port`](#port)
-* [`bind_ip`](#bind_ip)
-* [`hostname`](#hostname)
-* [`timezone`](#timezone)
-* [`hdm_path`](#hdm_path)
-* [`git_url`](#git_url)
-* [`user`](#user)
-* [`group`](#group)
-* [`puppetdb_settings`](#puppetdb_settings)
-* [`puppet_code_dir`](#puppet_code_dir)
-* [`allow_encryption`](#allow_encryption)
-* [`read_only`](#read_only)
-* [`git_data`](#git_data)
-* [`ldap_settings`](#ldap_settings)
-* [`hdm_hiera_config_file`](#hdm_hiera_config_file)
+* [`method`](#-hdm--method)
+* [`manage_docker`](#-hdm--manage_docker)
+* [`version`](#-hdm--version)
+* [`ruby_version`](#-hdm--ruby_version)
+* [`port`](#-hdm--port)
+* [`bind_ip`](#-hdm--bind_ip)
+* [`hostname`](#-hdm--hostname)
+* [`timezone`](#-hdm--timezone)
+* [`hdm_path`](#-hdm--hdm_path)
+* [`secret_key_base`](#-hdm--secret_key_base)
+* [`git_url`](#-hdm--git_url)
+* [`user`](#-hdm--user)
+* [`group`](#-hdm--group)
+* [`puppetdb_settings`](#-hdm--puppetdb_settings)
+* [`puppet_code_dir`](#-hdm--puppet_code_dir)
+* [`allow_encryption`](#-hdm--allow_encryption)
+* [`read_only`](#-hdm--read_only)
+* [`git_data`](#-hdm--git_data)
+* [`ldap_settings`](#-hdm--ldap_settings)
+* [`hdm_hiera_config_file`](#-hdm--hdm_hiera_config_file)
 
-##### <a name="method"></a>`method`
+##### <a name="-hdm--method"></a>`method`
 
 Data type: `Enum['docker', 'rvm']`
 
@@ -70,7 +71,7 @@ bundler gem.
 
 Default value: `'docker'`
 
-##### <a name="manage_docker"></a>`manage_docker`
+##### <a name="-hdm--manage_docker"></a>`manage_docker`
 
 Data type: `Boolean`
 
@@ -81,9 +82,9 @@ RedHat and windows systems.
 SLES users must install and start docker via puppet package
 and service resource.
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="version"></a>`version`
+##### <a name="-hdm--version"></a>`version`
 
 Data type: `String[1]`
 
@@ -93,7 +94,7 @@ the git tag when using rvm
 
 Default value: `'main'`
 
-##### <a name="ruby_version"></a>`ruby_version`
+##### <a name="-hdm--ruby_version"></a>`ruby_version`
 
 Data type: `String[1]`
 
@@ -102,7 +103,7 @@ Please check [hdm ruby version requirement](https://github.com/betadots/hdm/blob
 
 Default value: `'3.1.2'`
 
-##### <a name="port"></a>`port`
+##### <a name="-hdm--port"></a>`port`
 
 Data type: `Stdlib::Port`
 
@@ -110,7 +111,7 @@ The port where HDM should run on
 
 Default value: `3000`
 
-##### <a name="bind_ip"></a>`bind_ip`
+##### <a name="-hdm--bind_ip"></a>`bind_ip`
 
 Data type: `Stdlib::IP::Address::Nosubnet`
 
@@ -118,7 +119,7 @@ The ip address to bind the process to
 
 Default value: `'0.0.0.0'`
 
-##### <a name="hostname"></a>`hostname`
+##### <a name="-hdm--hostname"></a>`hostname`
 
 Data type: `String[1]`
 
@@ -126,7 +127,7 @@ The HDM webservice hostname
 
 Default value: `$facts['networking']['fqdn']`
 
-##### <a name="timezone"></a>`timezone`
+##### <a name="-hdm--timezone"></a>`timezone`
 
 Data type: `String[1]`
 
@@ -134,7 +135,7 @@ THe timezone to use when running with docker
 
 Default value: `$facts['timezone']`
 
-##### <a name="hdm_path"></a>`hdm_path`
+##### <a name="-hdm--hdm_path"></a>`hdm_path`
 
 Data type: `Stdlib::Unixpath`
 
@@ -142,7 +143,15 @@ Path where one wants to install and configure hdm
 
 Default value: `'/etc/hdm'`
 
-##### <a name="git_url"></a>`git_url`
+##### <a name="-hdm--secret_key_base"></a>`secret_key_base`
+
+Data type: `String[32,32]`
+
+A 32 character key. Key can be generated using `openssl rand -hex32`
+
+Default value: `'7a8509ab31fdb0c15c71c941d089474a'`
+
+##### <a name="-hdm--git_url"></a>`git_url`
 
 Data type: `String[1]`
 
@@ -150,7 +159,7 @@ The git URL to clone the hdm repo from
 
 Default value: `'https://github.com/betadots/hdm.git'`
 
-##### <a name="user"></a>`user`
+##### <a name="-hdm--user"></a>`user`
 
 Data type: `String[1]`
 
@@ -158,7 +167,7 @@ The hdm user name
 
 Default value: `'hdm'`
 
-##### <a name="group"></a>`group`
+##### <a name="-hdm--group"></a>`group`
 
 Data type: `String[1]`
 
@@ -166,7 +175,7 @@ The hdm group name
 
 Default value: `'hdm'`
 
-##### <a name="puppetdb_settings"></a>`puppetdb_settings`
+##### <a name="-hdm--puppetdb_settings"></a>`puppetdb_settings`
 
 Data type: `Hdm::Puppetdb`
 
@@ -201,7 +210,7 @@ Using SSL cert:
 
 Default value: `{ 'server' => 'http://localhost:8080', }`
 
-##### <a name="puppet_code_dir"></a>`puppet_code_dir`
+##### <a name="-hdm--puppet_code_dir"></a>`puppet_code_dir`
 
 Data type: `Stdlib::Unixpath`
 
@@ -211,7 +220,7 @@ defaults to '/etc/puppetlabs/code'
 
 Default value: `'/etc/puppetlabs/code'`
 
-##### <a name="allow_encryption"></a>`allow_encryption`
+##### <a name="-hdm--allow_encryption"></a>`allow_encryption`
 
 Data type: `Boolean`
 
@@ -220,9 +229,9 @@ Needs HDM access to EYAML keys (public and private)
 Values for keys are taken from hiera.yaml file and can
 not be set individually.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="read_only"></a>`read_only`
+##### <a name="-hdm--read_only"></a>`read_only`
 
 Data type: `Boolean`
 
@@ -232,9 +241,9 @@ WARNING!! setting to true is untested!!!
 Changes are stored via GIT.
 Setting this to true also needs the git_data Array parameter
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="git_data"></a>`git_data`
+##### <a name="-hdm--git_data"></a>`git_data`
 
 Data type: `Optional[Hdm::Gitdata]`
 
@@ -252,9 +261,9 @@ Required Array of hash data:
   ]
 ```
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="ldap_settings"></a>`ldap_settings`
+##### <a name="-hdm--ldap_settings"></a>`ldap_settings`
 
 Data type: `Optional[Hdm::Ldap_settings]`
 
@@ -271,9 +280,9 @@ Needs the following Hash:
   }
 ```
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="hdm_hiera_config_file"></a>`hdm_hiera_config_file`
+##### <a name="-hdm--hdm_hiera_config_file"></a>`hdm_hiera_config_file`
 
 Data type: `String[1]`
 
@@ -284,24 +293,24 @@ Default value: `'hiera.yaml'`
 
 ## Data types
 
-### <a name="hdmgitdata"></a>`Hdm::Gitdata`
+### <a name="Hdm--Gitdata"></a>`Hdm::Gitdata`
 
 type to enforce git settings for HDM
 
 Alias of
 
 ```puppet
-Array[Optional[Struct[
+Array[Struct[
     {
       datadir                => Stdlib::Unixpath,
       git_url                => String[1],
       path_in_repo           => String[1],
       Optional[ssh_priv_key] => String[1],
     }
-  ]]]
+  ]]
 ```
 
-### <a name="hdmldap_settings"></a>`Hdm::Ldap_settings`
+### <a name="Hdm--Ldap_settings"></a>`Hdm::Ldap_settings`
 
 type to enforce ldap settings for HDM
 
@@ -309,16 +318,16 @@ Alias of
 
 ```puppet
 Struct[{
-    Optional[host]             => Stdlib::Host,
-    Optional[port]             => Stdlib::Port,
-    Optional[base_dn]          => String[1],
-    Optional[bind_dn]          => String[1],
-    Optional[bind_dn_password] => String[1],
-    'ldaps'                    => Boolean,
+    'host'             => Stdlib::Host,
+    'port'             => Stdlib::Port,
+    'base_dn'          => String[1],
+    'bind_dn'          => String[1],
+    'bind_dn_password' => Sensitive,
+    'ldaps'            => Boolean,
   }]
 ```
 
-### <a name="hdmpuppetdb"></a>`Hdm::Puppetdb`
+### <a name="Hdm--Puppetdb"></a>`Hdm::Puppetdb`
 
 type to enforce puppetdb settings for HDM
 
