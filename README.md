@@ -31,14 +31,21 @@ This module allows you to either make use of the HDM Docker container or to inst
 
 ## Major Update
 
-As of version 1.0.0 the HDM Docker container runs in production mode.
-Existing installations must prepare this change by copying the development.sqlite3 file to production.sqlite3
+As of version 1.0.0 and newer the HDM Docker container runs in production mode.
+Existing installations using HDM container prior version 1.0.0 must prepare this change by copying the development.sqlite3 file to production.sqlite3
 
 ```shell
 cp /etc/hdm/development.sqlite3 /etc/hdm/production.sqlite3
 ```
 
-After the update, the development.sqlite3 file can be deleted.
+Now Puppet can configure the system.
+Once HDM is up and running the database can be changed from development to production:
+
+```shell
+docker exec -ti hdm /hdm/bin/rails db:environment:set RAILS_ENV=production
+```
+
+After the update and checking functionality the development.sqlite3 file can be deleted.
 
 ## Setup
 
