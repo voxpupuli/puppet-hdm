@@ -142,12 +142,12 @@ class hdm (
 ) {
   case $method {
     'docker': {
-      include hdm::docker
       $run_mode = 'production'
+      include hdm::docker
     }
     'rvm': {
-      include hdm::rvm
       $run_mode = 'development'
+      include hdm::rvm
     }
     default: {
       fail('Unknown HDM installation method.')
