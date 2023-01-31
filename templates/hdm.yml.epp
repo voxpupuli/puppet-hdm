@@ -1,5 +1,5 @@
 ---
-development:
+<%= $hdm::run_mode %>:
   read_only: <%= $hdm::read_only %>
   allow_encryption: <%= $hdm::allow_encryption %>
   puppet_db:

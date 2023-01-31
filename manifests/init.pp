@@ -31,6 +31,8 @@
 #
 # @param hdm_path Path where one wants to install and configure hdm
 #
+# @param secret_key_base A 32 character key. Key can be generated using `openssl rand -hex32`
+#
 # @param git_url The git URL to clone the hdm repo from
 #
 # @param user The hdm user name
@@ -125,6 +127,7 @@ class hdm (
   String[1]                     $hostname              = $facts['networking']['fqdn'],
   String[1]                     $timezone              = $facts['timezone'],
   Stdlib::Unixpath              $hdm_path              = '/etc/hdm',
+  String[32,32]                 $secret_key_base       = '7a8509ab31fdb0c15c71c941d089474a',
   String[1]                     $user                  = 'hdm',
   String[1]                     $group                 = 'hdm',
   String[1]                     $git_url               = 'https://github.com/betadots/hdm.git',
@@ -140,9 +143,11 @@ class hdm (
   case $method {
     'docker': {
       include hdm::docker
+      $run_mode = 'production'
     }
     'rvm': {
       include hdm::rvm
+      $run_mode = 'development'
     }
     default: {
       fail('Unknown HDM installation method.')

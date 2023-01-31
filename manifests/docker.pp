@@ -58,6 +58,7 @@ class hdm::docker {
     env      => [
       "TZ=${$hdm::timezone}",
       "RAILS_DEVELOPMENT_HOSTS=${hdm::hostname}",
+      "SECRET_KEY_BASE=${hdm::secret_key_base}",
     ],
     volumes  => [
       "${hdm::hdm_path}:${hdm::hdm_path}",
