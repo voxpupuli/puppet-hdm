@@ -68,7 +68,9 @@ If you want to install HDM using RVM, you need the following modules:
 
 The most simple approach is to just include the hdm class:
 
-    include hdm
+```puppet
+include hdm
+```
 
 This will install HDM as docker container.
 
