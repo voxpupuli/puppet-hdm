@@ -5,7 +5,6 @@ type Hdm::Ldap_settings = Struct[
     'port'             => Stdlib::Port,
     'base_dn'          => String[1],
     'bind_dn'          => String[1],
-    'bind_dn_password' => Sensitive,
     'ldaps'            => Boolean,
   }
 ]

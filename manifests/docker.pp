@@ -6,6 +6,7 @@
 #
 class hdm::docker {
   assert_private()
+
   if $hdm::manage_docker {
     include docker
   }
@@ -18,6 +19,7 @@ class hdm::docker {
     'Debian' => '/usr/sbin/nologin',
     'RedHat' => '/sbin/nologin',
   }
+
   user { $hdm::user:
     ensure => present,
     gid    => $hdm::group,
