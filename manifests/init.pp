@@ -105,11 +105,12 @@
 #       'port'             => 389,
 #       'base_dn'          => 'ou=hdm,dc=nodomain',
 #       'bind_dn'          => 'cn=admin,dc=nodomain',
+#       'bind_dn_password' => 'openldap', # clear text
 #       'ldaps'            =>  false,
 #     }
 #   ```
 #
-# @param ldap_bind_dn_password sensitive password for ldap bind
+# @param ldap_bind_dn_password set sensitive password for ldap bind
 #
 # @param hdm_hiera_config_file Set to another file if you
 #   want HDM to not use hiera.yaml.
