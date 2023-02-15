@@ -145,10 +145,11 @@ class hdm (
   if $ldap_settings {
     if $ldap_bind_dn_password {
       $final_ldap_settings = $ldap_settings + { bind_dn_password => $ldap_bind_dn_password }
-    }
-    else {
+    } else {
       $final_ldap_settings = $ldap_settings
     }
+  } else {
+    $final_ldap_settings = {}
   }
 
   case $method {
