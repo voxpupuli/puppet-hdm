@@ -142,7 +142,14 @@ class hdm (
   Optional[Hdm::Ldap_settings]   $ldap_settings         = undef,
   Optional[Sensitive[String[1]]] $ldap_bind_dn_password = undef,
 ) {
-  $final_ldap_settings = $ldap_settings + { bind_dn_password => $ldap_bind_dn_password }
+  if $ldap_settings {
+    if $ldap_bind_dn_password {
+      $final_ldap_settings = $ldap_settings + { bind_dn_password => $ldap_bind_dn_password }
+    }
+    else {
+      $final_ldap_settings = $ldap_settings
+    }
+  }
 
   case $method {
     'docker': {
