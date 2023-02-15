@@ -68,7 +68,7 @@
 #     }
 #   ```
 #
-# @param puppet_code_dir The path where HDM can find deployed 
+# @param puppet_code_dir The path where HDM can find deployed
 #   Puppet environments (similar to puppet config code_dir)
 #   defaults to '/etc/puppetlabs/code'
 #
@@ -77,8 +77,8 @@
 #   Values for keys are taken from hiera.yaml file and can
 #   not be set individually.
 #
-# @param read_only Set to false if you want the ability to 
-#   change data via HDM webfrontend. 
+# @param read_only Set to false if you want the ability to
+#   change data via HDM webfrontend.
 #   WARNING!! setting to true is untested!!!
 #   Changes are stored via GIT.
 #   Setting this to true also needs the git_data Array parameter
@@ -105,12 +105,14 @@
 #       'port'             => 389,
 #       'base_dn'          => 'ou=hdm,dc=nodomain',
 #       'bind_dn'          => 'cn=admin,dc=nodomain',
-#       'bind_dn_password' => 'openldap',
+#       'bind_dn_password' => 'openldap', # clear text
 #       'ldaps'            =>  false,
 #     }
 #   ```
 #
-# @param hdm_hiera_config_file Set to another file if you 
+# @param ldap_bind_dn_password set sensitive password for ldap bind
+#
+# @param hdm_hiera_config_file Set to another file if you
 #   want HDM to not use hiera.yaml.
 #
 # @example
@@ -135,11 +137,22 @@ class hdm (
   Stdlib::Unixpath              $puppet_code_dir       = '/etc/puppetlabs/code',
   String[1]                     $hdm_hiera_config_file = 'hiera.yaml',
   # additional application parameter
-  Boolean                       $allow_encryption      = false,
-  Boolean                       $read_only             = true,
-  Optional[Hdm::Gitdata]        $git_data              = undef,
-  Optional[Hdm::Ldap_settings]  $ldap_settings         = undef,
+  Boolean                        $allow_encryption      = false,
+  Boolean                        $read_only             = true,
+  Optional[Hdm::Gitdata]         $git_data              = undef,
+  Optional[Hdm::Ldap_settings]   $ldap_settings         = undef,
+  Optional[Sensitive[String[1]]] $ldap_bind_dn_password = undef,
 ) {
+  if $ldap_settings {
+    if $ldap_bind_dn_password {
+      $final_ldap_settings = $ldap_settings + { bind_dn_password => $ldap_bind_dn_password }
+    } else {
+      $final_ldap_settings = $ldap_settings
+    }
+  } else {
+    $final_ldap_settings = {}
+  }
+
   case $method {
     'docker': {
       $run_mode = 'production'

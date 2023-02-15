@@ -6,6 +6,7 @@
 # @api private
 class hdm::rvm {
   assert_private()
+
   group { $hdm::group:
     ensure => present,
   }
@@ -53,7 +54,9 @@ class hdm::rvm {
         package { 'devtoolset-7':
           ensure => present,
         }
+
         $exec_prefix = 'scl enable devtoolset-7 '
+
         exec { 'update sqlite':
           command => 'yum install -y https://kojipkgs.fedoraproject.org//packages/sqlite/3.8.11/1.fc21/x86_64/sqlite-devel-3.8.11-1.fc21.x86_64.rpm https://kojipkgs.fedoraproject.org//packages/sqlite/3.8.11/1.fc21/x86_64/sqlite-3.8.11-1.fc21.x86_64.rpm',
           path    => $facts['path'],
