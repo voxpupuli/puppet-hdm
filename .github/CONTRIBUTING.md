@@ -13,6 +13,10 @@
 * [Unit tests in docker](#unit-tests-in-docker)
 * [Integration tests](#integration-tests)
 
+This module has grown over time based on a range of contributions from
+people using it. If you follow these contributing guidelines your patch
+will likely make it into a release a little more quickly.
+
 ## Contributing
 
 Please note that this project is released with a Contributor Code of Conduct.
@@ -22,7 +26,7 @@ By participating in this project you agree to abide by its terms.
 * Fork the repo.
 * Create a separate branch for your change.
 * We only take pull requests with passing tests, and documentation. [GitHub Actions](https://docs.github.com/en/actions) run the tests for us. You can also execute them locally. This is explained [in a later section](#the-test-matrix).
-* Checkout [our docs](https://voxpupuli.org/docs/reviewing_pr/) we use to review a module and the [official styleguide](https://puppet.com/docs/puppet/7.0/style_guide.html). They provide some guidance for new code that might help you before you submit a pull request.
+* Checkout [our docs](https://voxpupuli.org/docs/reviewing_pr/) we use to review a module and the [official styleguide](https://puppet.com/docs/puppet/6.0/style_guide.html). They provide some guidance for new code that might help you before you submit a pull request.
 * Add a test for your change. Only refactoring and documentation changes require no new tests. If you are adding functionality or fixing a bug, please add a test.
 * Squash your commits down into logical components. Make sure to rebase against our current master.
 * Push the branch to your fork and submit a pull request.
@@ -120,7 +124,7 @@ If you have Ruby 2.x or want a specific version of Puppet,
 you must set an environment variable such as:
 
 ```sh
-export PUPPET_VERSION="~> 5.5.6"
+export PUPPET_GEM_VERSION="~> 6.1.0"
 ```
 
 You can install all needed gems for spec tests into the modules directory by
@@ -228,21 +232,20 @@ simple tests against it after applying the module. You can run this
 with:
 
 ```sh
-BEAKER_setfile=debian10-x64 bundle exec rake beaker
+BEAKER_setfile=debian11-64 bundle exec rake beaker
 ```
 
 You can replace the string `debian10` with any common operating system.
 The following strings are known to work:
 
-* ubuntu1604
 * ubuntu1804
 * ubuntu2004
-* debian9
 * debian10
+* debian11
 * centos7
 * centos8
 
 For more information and tips & tricks, see [voxpupuli-acceptance's documentation](https://github.com/voxpupuli/voxpupuli-acceptance#running-tests).
 
-This file has been taken from [puppet-postfix](https://github.com/voxpupuli/puppet-postfix) module.
-
+The source of this file is in our [modulesync_config](https://github.com/voxpupuli/modulesync_config/blob/master/moduleroot/.github/CONTRIBUTING.md.erb)
+repository.
