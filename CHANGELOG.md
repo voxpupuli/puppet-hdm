@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.2.1](https://github.com/voxpupuli/puppet-hdm/tree/v2.2.1) (2023-02-17)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v2.2.0...v2.2.1)
+
+**Merged pull requests:**
+
+- README.md: Fix license badge [\#49](https://github.com/voxpupuli/puppet-hdm/pull/49) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v2.2.0](https://github.com/voxpupuli/puppet-hdm/tree/v2.2.0) (2023-02-17)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v2.1.2...v2.2.0)
