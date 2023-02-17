@@ -1,13 +1,14 @@
 # puppet-hdm
 
-[![Build Status](https://github.com/betadots/puppet-hdm/workflows/CI/badge.svg)](https://github.com/betadots/puppet-hdm/actions?query=workflow%3ACI)
-[![Release](https://github.com/betadots/puppet-hdm/actions/workflows/release.yml/badge.svg)](https://github.com/betadots/puppet-hdm/actions/workflows/release.yml)
-[![Puppet Forge](https://img.shields.io/puppetforge/v/betadots/hdm.svg)](https://forge.puppetlabs.com/puppet/hdm)
-[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/betadots/hdm.svg)](https://forge.puppetlabs.com/betadots/hdm)
-[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/betadots/hdm.svg)](https://forge.puppetlabs.com/betadots/hdm)
-[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/betadots/hdm.svg)](https://forge.puppetlabs.com/betadots/hdm)
-[![puppetmodule.info docs](http://www.puppetmodule.info/images/badge.png)](http://www.puppetmodule.info/m/betadots-hdm)
-[![Apache-2 License](https://img.shields.io/github/license/betadots/puppet-hdm.svg)](LICENSE)
+[![Build Status](https://github.com/voxpupuli/puppet-hdm/workflows/CI/badge.svg)](https://github.com/voxpupuli/puppet-hdm/actions?query=workflow%3ACI)
+[![Release](https://github.com/voxpupuli/puppet-hdm/actions/workflows/release.yml/badge.svg)](https://github.com/voxpupuli/puppet-hdm/actions/workflows/release.yml)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/hdm.svg)](https://forge.puppetlabs.com/puppet/hdm)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/hdm.svg)](https://forge.puppetlabs.com/puppet/hdm)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/hdm.svg)](https://forge.puppetlabs.com/puppet/hdm)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/hdm.svg)](https://forge.puppetlabs.com/puppet/hdm)
+[![puppetmodule.info docs](http://www.puppetmodule.info/images/badge.png)](http://www.puppetmodule.info/m/puppet-hdm)
+[![Apache-2 License](https://img.shields.io/github/license/puppet/puppet-hdm.svg)](LICENSE)
+[![By betadots](https://img.shields.io/badge/by-betadots-fb7047.svg)](#transfer-notice)
 
 ## Table of Contents
 
@@ -20,6 +21,8 @@
     - [Beginning with hdm](#beginning-with-hdm)
   - [Reference](#reference)
   - [Limitations](#limitations)
+  - [Transfer Notice](#transfer-notice)
+  - [License](#license)
 
 ## Description
 
@@ -82,3 +85,13 @@ Please check the [REFERENCE.md](REFERENCE.md) file.
 
 On SLES we can not use the puppetlabs/docker module.
 Instead set the manage_docker parameter to false and take care on docker package and service by yourself.
+
+## Transfer Notice
+
+This plugin was originally authored by [betadots GmbH](https://www.betadots.de).
+The maintainer preferred that Vox Pupuli take ownership of the module for future improvement and maintenance.
+Existing pull requests and issues were transferred over, please fork and continue to contribute here instead of Puppet Inc.
+
+## License
+
+This module is licensed under the Apache-2 license.
