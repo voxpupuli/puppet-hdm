@@ -7,7 +7,7 @@
 [![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/hdm.svg)](https://forge.puppetlabs.com/puppet/hdm)
 [![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/hdm.svg)](https://forge.puppetlabs.com/puppet/hdm)
 [![puppetmodule.info docs](http://www.puppetmodule.info/images/badge.png)](http://www.puppetmodule.info/m/puppet-hdm)
-[![Apache-2 License](https://img.shields.io/github/license/puppet/puppet-hdm.svg)](LICENSE)
+[![Apache-2 License](https://img.shields.io/github/license/voxpupuli/puppet-hdm.svg)](LICENSE)
 [![By betadots](https://img.shields.io/badge/by-betadots-fb7047.svg)](#transfer-notice)
 
 ## Table of Contents
