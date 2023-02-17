@@ -18,7 +18,7 @@
   - [Major Update](#major-update)
   - [Setup](#setup)
     - [Setup Requirements](#setup-requirements)
-    - [Beginning with hdm](#beginning-with-hdm)
+    - [Beginning with betadots HDM](#beginning-with-betadots-hdm)
   - [Reference](#reference)
   - [Limitations](#limitations)
   - [Transfer Notice](#transfer-notice)
@@ -26,11 +26,11 @@
 
 ## Description
 
-This module manages [HDM](https://github.com/betadots/hdm) installation.
+This module manages the betadots [HDM](https://github.com/betadots/hdm) installation.
 
 HDM can be installed on Puppet Server or on any other system with PuppetDB access and Puppet code deployed.
 
-This module allows you to either make use of the HDM Docker container or to install HDM using RVM.
+This module allows you to either make use of the betadots HDM Docker container or to install HDM using RVM.
 
 ## Major Update
 
@@ -67,7 +67,7 @@ If you want to install HDM using RVM, you need the following modules:
 - puppetlabs/vcsrepo - min version 5.2.0
 - puppet/systemd     - min version 3.10.0
 
-### Beginning with hdm
+### Beginning with betadots HDM
 
 The most simple approach is to just include the hdm class:
 
