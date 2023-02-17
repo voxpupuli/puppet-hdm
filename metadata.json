@@ -1,12 +1,12 @@
 {
-  "name": "betadots-hdm",
+  "name": "puppet-hdm",
   "version": "2.1.2",
-  "author": "betadots GmbH",
+  "author": "Vox Pupuli",
   "summary": "Manage Hiera Data Manager application",
   "license": "Apache-2.0",
-  "source": "https://github.com/betadots/puppet-hdm.git",
-  "project_page": "https://github.com/betadots/puppet-hdm",
-  "issues_url": "https://github.com/betadots/puppet-hdm/issues",
+  "source": "https://github.com/voxpupuli/puppet-hdm.git",
+  "project_page": "https://github.com/voxpupuli/puppet-hdm",
+  "issues_url": "https://github.com/voxpupuli/puppet-hdm/issues",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
@@ -84,8 +84,5 @@
       "name": "puppet",
       "version_requirement": ">= 6.21.0 < 8.0.0"
     }
-  ],
-  "pdk-version": "2.5.0",
-  "template-url": "pdk-default#2.5.0",
-  "template-ref": "tags/2.5.0-0-g369d483"
+  ]
 }
