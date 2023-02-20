@@ -88,9 +88,9 @@ Instead set the manage_docker parameter to false and take care on docker package
 
 ## Transfer Notice
 
-This plugin was originally authored by [betadots GmbH](https://www.betadots.de).
+This Puppet module was originally authored by [betadots GmbH](https://www.betadots.de).
 The maintainer preferred that Vox Pupuli take ownership of the module for future improvement and maintenance.
-Existing pull requests and issues were transferred over, please fork and continue to contribute here instead of Puppet Inc.
+Existing pull requests and issues were transferred over, please fork and continue to contribute here instead of github.com/betadots/puppet-hdm.
 
 ## License
 
