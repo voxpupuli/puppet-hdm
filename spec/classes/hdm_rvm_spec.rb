@@ -9,6 +9,7 @@ describe 'hdm' do
       let(:params) do
         {
           'method' => 'rvm',
+          'version' => 'main',
         }
       end
 
