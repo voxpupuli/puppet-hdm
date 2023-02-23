@@ -120,7 +120,7 @@
 #   include hdm
 class hdm (
   # installation parameter
-  String[1]                     $version,
+  String[1]                     $version               = '1.0.1',
   Enum['docker', 'rvm']         $method                = 'docker',
   Boolean                       $manage_docker         = true,
   String[1]                     $ruby_version          = '3.1.2',
