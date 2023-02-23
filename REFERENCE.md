@@ -94,6 +94,8 @@ Version is the image tag name when using docker and
 the git tag when using rvm
 Please find the releases on HDM website: https://github.com/betadots/hdm/releases
 
+Default value: `'1.0.1'`
+
 ##### <a name="-hdm--ruby_version"></a>`ruby_version`
 
 Data type: `String[1]`
