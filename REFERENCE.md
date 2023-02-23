@@ -92,8 +92,7 @@ Data type: `String[1]`
 Select the version to deploy.
 Version is the image tag name when using docker and
 the git tag when using rvm
-
-Default value: `'main'`
+Please find the releases on HDM website: https://github.com/betadots/hdm/releases
 
 ##### <a name="-hdm--ruby_version"></a>`ruby_version`
 

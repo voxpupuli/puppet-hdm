@@ -69,10 +69,23 @@ If you want to install HDM using RVM, you need the following modules:
 
 ### Beginning with betadots HDM
 
-The most simple approach is to just include the hdm class:
+The most simple approach is to just include the hdm class and provide the version parameter:
 
 ```puppet
 include hdm
+```
+
+You can find the released versions on [HDM releases page](https://github.com/betadots/hdm/releases)
+```yaml
+hdm::version: '1.0.1
+```
+
+Another option is to use class resource type declaration:
+
+```puppet
+class { 'hdm':
+  version => '1.0.1',
+}
 ```
 
 This will install HDM as docker container.

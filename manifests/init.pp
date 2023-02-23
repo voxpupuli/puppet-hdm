@@ -17,6 +17,7 @@
 # @param version Select the version to deploy.
 #   Version is the image tag name when using docker and
 #   the git tag when using rvm
+#   Please find the releases on HDM website: https://github.com/betadots/hdm/releases
 #
 # @param ruby_version Select the ruby version when installing using rvm
 #   Please check [hdm ruby version requirement](https://github.com/betadots/hdm/blob/main/.ruby-version)
@@ -119,9 +120,9 @@
 #   include hdm
 class hdm (
   # installation parameter
+  String[1]                     $version,
   Enum['docker', 'rvm']         $method                = 'docker',
   Boolean                       $manage_docker         = true,
-  String[1]                     $version               = 'main',
   String[1]                     $ruby_version          = '3.1.2',
   # required application parameter
   Stdlib::Port                  $port                  = 3000,

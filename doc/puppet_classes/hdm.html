@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Puppet Class: hdm
+  
+    &mdash; Documentation by YARD 0.9.28
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "puppet_classes::hdm";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../puppet_class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (h)</a> &raquo;
+    <span class='title'><span class='object_link'>Puppet Classes</span></span>
+     &raquo; 
+    <span class="title">hdm</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="puppet_class_list_link"
+        href="../puppet_class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Puppet Class: hdm</h1>
+<div class="box_info">
+  
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>
+      manifests/init.pp
+    </dd>
+  </dl>
+</div>
+
+  <h2>Summary</h2>
+  HDM installation main class
+
+<h2>Overview</h2>
+<div class="docstring">
+  <div class="discussion">
+    
+<p>This class controls the installation of HDM</p>
+
+  </div>
+</div>
+
+
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_include'>include</span> <span class='id identifier rubyid_hdm'>hdm</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>method</span>
+      
+      
+        <span class='type'>(<tt>Enum['<span class='object_link'><a href="hdm_3A_3Adocker.html" title="puppet_classes::hdm::docker (puppet_class)">docker</a></span>', '<span class='object_link'><a href="hdm_3A_3Arvm.html" title="puppet_classes::hdm::rvm (puppet_class)">rvm</a></span>']</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;docker&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Select the installation method. Available methods: docker, rvm When using rvm we install rvm into system and add the bundler gem.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>manage_docker</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>true</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Set to false if this module should NOT also include the docker class (without any arguments) Please note that the docker module only works on Debian, RedHat and windows systems. SLES users must install and start docker via puppet package and service resource.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>version</span>
+      
+      
+        <span class='type'>(<tt>String[1]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Select the version to deploy. Version is the image tag name when using docker and the git tag when using rvm Please find the releases on HDM website: <a href="https://github.com/betadots/hdm/releases">github.com/betadots/hdm/releases</a></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ruby_version</span>
+      
+      
+        <span class='type'>(<tt>String[1]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;3.1.2&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Select the ruby version when installing using rvm Please check <a href="https://github.com/betadots/hdm/blob/main/.ruby-version">hdm ruby version requirement</a></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>port</span>
+      
+      
+        <span class='type'>(<tt>Stdlib::Port</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>3000</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The port where HDM should run on</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>bind_ip</span>
+      
+      
+        <span class='type'>(<tt>Stdlib::IP::Address::Nosubnet</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;0.0.0.0&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The ip address to bind the process to</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>hostname</span>
+      
+      
+        <span class='type'>(<tt>String[1]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$facts[&#39;networking&#39;][&#39;fqdn&#39;]</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The HDM webservice hostname</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>timezone</span>
+      
+      
+        <span class='type'>(<tt>String[1]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$facts[&#39;timezone&#39;]</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>THe timezone to use when running with docker</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>hdm_path</span>
+      
+      
+        <span class='type'>(<tt>Stdlib::Unixpath</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;/etc/hdm&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Path where one wants to install and configure hdm</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>secret_key_base</span>
+      
+      
+        <span class='type'>(<tt>String[1]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;7a8509ab31fdb0c15c71c941d089474a&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A secret key. Key can be generated using <code>openssl rand -hex 16</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>git_url</span>
+      
+      
+        <span class='type'>(<tt>String[1]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;https://github.com/betadots/hdm.git&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The git URL to clone the hdm repo from</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>user</span>
+      
+      
+        <span class='type'>(<tt>String[1]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;hdm&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The hdm user name</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>group</span>
+      
+      
+        <span class='type'>(<tt>String[1]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;hdm&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The hdm group name</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>puppetdb_settings</span>
+      
+      
+        <span class='type'>(<tt>Hdm::Puppetdb</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{ &#39;server&#39; =&gt; &#39;http://localhost:8080&#39;, }</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A hash to provide information on how HDM can connect to puppetdb The following options are possible: Plain text (default) <code>   {     &#39;server&#39;           =&gt; &#39;http://localhost:8080&#39;,   } </code> Using PE token: <code>   {     &#39;server&#39;           =&gt; &#39;https://localhost:8081&#39;,     &#39;token&#39;            =&gt; &#39;/etc/hdm/puppetdb.token&#39;,     &#39;cacert&#39;           =&gt; &#39;&lt;path to cacert&gt;&#39;,   } </code> Using SSL cert: <code>   {     &#39;server&#39;           =&gt; &#39;https://localhost:8081&#39;,     &#39;pem&#39;              =&gt; {       &#39;key&#39;            =&gt; &#39;/etc/hdm/ssl.key&#39;,       &#39;cert&#39;           =&gt; &#39;/etc/hdm/ssl.cert&#39;,       &#39;ca_file&#39;        =&gt; &#39;/etc/hdm/ssl.ca&#39;,     },   } </code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>puppet_code_dir</span>
+      
+      
+        <span class='type'>(<tt>Stdlib::Unixpath</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;/etc/puppetlabs/code&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The path where HDM can find deployed Puppet environments (similar to puppet config code_dir) defaults to &#39;/etc/puppetlabs/code&#39;</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>allow_encryption</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>false</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Specify if HDM should use EYAML Needs HDM access to EYAML keys (public and private) Values for keys are taken from hiera.yaml file and can not be set individually.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>read_only</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>true</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Set to false if you want the ability to change data via HDM webfrontend. WARNING!! setting to true is untested!!! Changes are stored via GIT. Setting this to true also needs the git_data Array parameter</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>git_data</span>
+      
+      
+        <span class='type'>(<tt>Optional[Hdm::Gitdata]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Configure several settings related to the option to modify data via Webfrontend. WARNING!! untested!! Required Array of hash data: <code>   [     {       &#39;datadir&#39;        =&gt; &#39;modules/hieradata/data&#39;,       &#39;git_url&#39;        =&gt; &#39;git@server:path/repo.git&#39;,       &#39;path_in_repo&#39;   =&gt; &#39;data&#39;,       &#39;ssh_priv_key&#39;   =&gt; &#39;.ssh/id_rsa&#39;,     }   ] </code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ldap_settings</span>
+      
+      
+        <span class='type'>(<tt>Optional[Hdm::Ldap_settings]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Config for LDAP integration Needs the following Hash: <code>   {     &#39;host&#39;             =&gt; &#39;localhost&#39;,     &#39;port&#39;             =&gt; 389,     &#39;base_dn&#39;          =&gt; &#39;ou=hdm,dc=nodomain&#39;,     &#39;bind_dn&#39;          =&gt; &#39;cn=admin,dc=nodomain&#39;,     &#39;bind_dn_password&#39; =&gt; &#39;openldap&#39;, # clear text     &#39;ldaps&#39;            =&gt;  false,   } </code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ldap_bind_dn_password</span>
+      
+      
+        <span class='type'>(<tt>Optional[Sensitive[String[1]]]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>set sensitive password for ldap bind</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>hdm_hiera_config_file</span>
+      
+      
+        <span class='type'>(<tt>String[1]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;hiera.yaml&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Set to another file if you want HDM to not use hiera.yaml.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><div class="method_details_list">
+  <table class="source_code">
+    <tr>
+      <td>
+        <pre class="lines">
+
+
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170</pre>
+      </td>
+      <td>
+        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 121</span>
+
+class hdm (
+  # installation parameter
+  String[1]                     $version,
+  Enum[&#39;docker&#39;, &#39;rvm&#39;]         $method                = &#39;docker&#39;,
+  Boolean                       $manage_docker         = true,
+  String[1]                     $ruby_version          = &#39;3.1.2&#39;,
+  # required application parameter
+  Stdlib::Port                  $port                  = 3000,
+  Stdlib::IP::Address::Nosubnet $bind_ip               = &#39;0.0.0.0&#39;,
+  String[1]                     $hostname              = $facts[&#39;networking&#39;][&#39;fqdn&#39;],
+  String[1]                     $timezone              = $facts[&#39;timezone&#39;],
+  Stdlib::Unixpath              $hdm_path              = &#39;/etc/hdm&#39;,
+  String[1]                     $secret_key_base       = &#39;7a8509ab31fdb0c15c71c941d089474a&#39;,
+  String[1]                     $user                  = &#39;hdm&#39;,
+  String[1]                     $group                 = &#39;hdm&#39;,
+  String[1]                     $git_url               = &#39;https://github.com/betadots/hdm.git&#39;,
+  Hdm::Puppetdb                 $puppetdb_settings     = { &#39;server&#39; =&gt; &#39;http://localhost:8080&#39;, },
+  Stdlib::Unixpath              $puppet_code_dir       = &#39;/etc/puppetlabs/code&#39;,
+  String[1]                     $hdm_hiera_config_file = &#39;hiera.yaml&#39;,
+  # additional application parameter
+  Boolean                        $allow_encryption      = false,
+  Boolean                        $read_only             = true,
+  Optional[Hdm::Gitdata]         $git_data              = undef,
+  Optional[Hdm::Ldap_settings]   $ldap_settings         = undef,
+  Optional[Sensitive[String[1]]] $ldap_bind_dn_password = undef,
+) {
+  if $ldap_settings {
+    if $ldap_bind_dn_password {
+      $final_ldap_settings = $ldap_settings + { bind_dn_password =&gt; $ldap_bind_dn_password }
+    } else {
+      $final_ldap_settings = $ldap_settings
+    }
+  } else {
+    $final_ldap_settings = {}
+  }
+
+  case $method {
+    &#39;docker&#39;: {
+      $run_mode = &#39;production&#39;
+      include hdm::docker
+    }
+    &#39;rvm&#39;: {
+      $run_mode = &#39;development&#39;
+      include hdm::rvm
+    }
+    default: {
+      fail(&#39;Unknown HDM installation method.&#39;)
+    }
+  }
+}</pre>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+
+      <div id="footer">
+     Generated by <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>.
+</div>
+
+    </div>
+  </body>
+</html>

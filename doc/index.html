@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.9.28
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="puppet_class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="puppet_class_list_link"
+        href="puppet_class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'>
+<h1 id="label-puppet-hdm">puppet-hdm</h1>
+
+<p><a href="https://github.com/voxpupuli/puppet-hdm/actions?query=workflow%3ACI"><img src="https://github.com/voxpupuli/puppet-hdm/workflows/CI/badge.svg"></a> <a href="https://github.com/voxpupuli/puppet-hdm/actions/workflows/release.yml"><img src="https://github.com/voxpupuli/puppet-hdm/actions/workflows/release.yml/badge.svg"></a> <a href="https://forge.puppetlabs.com/puppet/hdm"><img src="https://img.shields.io/puppetforge/v/puppet/hdm.svg"></a> <a href="https://forge.puppetlabs.com/puppet/hdm"><img src="https://img.shields.io/puppetforge/dt/puppet/hdm.svg"></a> <a href="https://forge.puppetlabs.com/puppet/hdm"><img src="https://img.shields.io/puppetforge/e/puppet/hdm.svg"></a> <a href="https://forge.puppetlabs.com/puppet/hdm"><img src="https://img.shields.io/puppetforge/f/puppet/hdm.svg"></a> <a href="http://www.puppetmodule.info/m/puppet-hdm"><img src="http://www.puppetmodule.info/images/badge.png"></a> <a href="LICENSE"><img src="https://img.shields.io/github/license/voxpupuli/puppet-hdm.svg"></a> <a href="#transfer-notice"><img src="https://img.shields.io/badge/by-betadots-fb7047.svg"></a></p>
+
+<h2 id="label-Table+of+Contents">Table of Contents</h2>
+<ul><li>
+<p><a href="#puppet-hdm">puppet-hdm</a></p>
+</li><li>
+<p><a href="#table-of-contents">Table of Contents</a></p>
+</li><li>
+<p><a href="#description">Description</a></p>
+</li><li>
+<p><a href="#major-update">Major Update</a></p>
+</li><li>
+<p><a href="#setup">Setup</a></p>
+<ul><li>
+<p><a href="#setup-requirements">Setup Requirements</a></p>
+</li><li>
+<p><a href="#beginning-with-betadots-hdm">Beginning with betadots HDM</a></p>
+</li></ul>
+</li><li>
+<p><a href="#reference">Reference</a></p>
+</li><li>
+<p><a href="#limitations">Limitations</a></p>
+</li><li>
+<p><a href="#transfer-notice">Transfer Notice</a></p>
+</li><li>
+<p><a href="#license">License</a></p>
+</li></ul>
+
+<h2 id="label-Description">Description</h2>
+
+<p>This module manages the betadots <a href="https://github.com/betadots/hdm">HDM</a> installation.</p>
+
+<p>HDM can be installed on Puppet Server or on any other system with PuppetDB access and Puppet code deployed.</p>
+
+<p>This module allows you to either make use of the betadots HDM Docker container or to install HDM using RVM.</p>
+
+<h2 id="label-Major+Update">Major Update</h2>
+
+<p>As of version 1.0.0 and newer the HDM Docker container runs in production mode. Existing installations using HDM container prior version 1.0.0 must prepare this change by copying the development.sqlite3 file to production.sqlite3</p>
+
+<pre class="code ruby"><code class="ruby">cp /etc/hdm/development.sqlite3 /etc/hdm/production.sqlite3
+</code></pre>
+
+<p>Now Puppet can configure the system. Once HDM is up and running the database can be changed from development to production:</p>
+
+<pre class="code ruby"><code class="ruby">docker exec -ti hdm /hdm/bin/rails db:environment:set RAILS_ENV=production
+</code></pre>
+
+<p>After the update and checking functionality the development.sqlite3 file can be deleted.</p>
+
+<h2 id="label-Setup">Setup</h2>
+
+<h3 id="label-Setup+Requirements">Setup Requirements</h3>
+
+<p>The puppet-hdm module needs puppetlabs/stdlib as we use some of the stdlib data types.</p>
+
+<p>If you want to make use of the docker container, you need the following module:</p>
+<ul><li>
+<p>puppetlabs/docker - min version 4.4.0</p>
+</li></ul>
+
+<p>If you want to install HDM using RVM, you need the following modules:</p>
+<ul><li>
+<p>puppet/rvm - min version 2.0.0</p>
+</li><li>
+<p>golja/gnupg - min version 1.2.3</p>
+</li><li>
+<p>puppetlabs/vcsrepo - min version 5.2.0</p>
+</li><li>
+<p>puppet/systemd - min version 3.10.0</p>
+</li></ul>
+
+<h3 id="label-Beginning+with+betadots+HDM">Beginning with betadots HDM</h3>
+
+<p>The most simple approach is to just include the hdm class and provide the version parameter:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_include'>include</span> <span class='id identifier rubyid_hdm'>hdm</span>
+</code></pre>
+
+<p>You can find the released versions on <a href="https://github.com/betadots/hdm/releases">HDM releases page</a> <code>yaml hdm::version: &#39;1.0.1 </code></p>
+
+<p>Another option is to use class resource type declaration:</p>
+
+<pre class="code ruby"><code class="ruby">class { &#39;hdm&#39;:
+  version =&gt; &#39;1.0.1&#39;,
+}
+</code></pre>
+
+<p>This will install HDM as docker container.</p>
+
+<h2 id="label-Reference">Reference</h2>
+
+<p>Please check the <a href="REFERENCE.md">REFERENCE.md</a> file.</p>
+
+<h2 id="label-Limitations">Limitations</h2>
+
+<p>On SLES we can not use the puppetlabs/docker module. Instead set the manage_docker parameter to false and take care on docker package and service by yourself.</p>
+
+<h2 id="label-Transfer+Notice">Transfer Notice</h2>
+
+<p>This Puppet module was originally authored by <a href="https://www.betadots.de">betadots GmbH</a>. The maintainer preferred that Vox Pupuli take ownership of the module for future improvement and maintenance. Existing pull requests and issues were transferred over, please fork and continue to contribute here instead of github.com/betadots/puppet-hdm.</p>
+
+<h2 id="label-License">License</h2>
+
+<p>This module is licensed under the Apache-2 license.</p>
+</div></div>
+
+      <div id="footer">
+     Generated by <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>.
+</div>
+
+    </div>
+  </body>
+</html>
