@@ -9,6 +9,7 @@ describe 'hdm' do
       let(:params) do
         {
           'method' => 'docker',
+          'version' => '1.0.1',
         }
       end
 
