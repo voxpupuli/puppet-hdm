@@ -15,7 +15,7 @@ describe 'hdm' do
 
       it { is_expected.to compile.with_all_deps }
       it { is_expected.to contain_class('docker') }
-      it { is_expected.to contain_file('/etc/hdm/hdm.yml').with(content => /hiera_config_file: "hiera.yaml"/) }
+      it { is_expected.to contain_file('/etc/hdm/hdm.yml').with(content => %r{hiera_config_file: "hiera.yaml"}) }
     end
   end
 end
