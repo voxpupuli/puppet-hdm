@@ -6,6 +6,7 @@
   <%- $hdm::puppetdb_settings.each |$key, $value| { -%>
     <%= $key %>: <%= $value %>
   <%- } -%>
+  hiera_config_file: "<%= $hdm::hdm_hiera_config_file %>"
   config_dir: <%= $hdm::puppet_code_dir %>
 <%- if ! $hdm::final_ldap_settings.empty { -%>
   ldap:
