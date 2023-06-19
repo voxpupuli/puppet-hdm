@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.0.0](https://github.com/voxpupuli/puppet-hdm/tree/v3.0.0) (2023-06-19)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v2.2.1...v3.0.0)
+
+**Breaking changes:**
+
+- Drop Puppet 6 support [\#56](https://github.com/voxpupuli/puppet-hdm/pull/56) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Allow setting of different hiera.yaml to use [\#60](https://github.com/voxpupuli/puppet-hdm/pull/60) ([tuxmea](https://github.com/tuxmea))
+- Switch version from main to fix version. [\#54](https://github.com/voxpupuli/puppet-hdm/pull/54) ([tuxmea](https://github.com/tuxmea))
+
 ## [v2.2.1](https://github.com/voxpupuli/puppet-hdm/tree/v2.2.1) (2023-02-17)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v2.2.0...v2.2.1)
