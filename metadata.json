@@ -77,6 +77,21 @@
         "18.04",
         "20.04"
       ]
+    },
+    {
+      "operatingsystem": "SLES",
+      "operatingsystemrelease": [
+        "12",
+        "15"
+      ]
+    },
+    {
+      "operatingsystem": "OpenSUSE",
+      "operatingsystemrelease": [
+        "12",
+        "13",
+        "15"
+      ]
     }
   ],
   "requirements": [
