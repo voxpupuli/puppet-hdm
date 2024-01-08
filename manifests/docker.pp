@@ -16,9 +16,8 @@ class hdm::docker {
   }
 
   $shell = $facts['os']['family'] ? {
-    'Debian' => '/usr/sbin/nologin',
-    'RedHat' => '/sbin/nologin',
-    'Suse'   => '/sbin/nologin',
+    'Debian'         => '/usr/sbin/nologin',
+    'RedHat', 'Suse' => '/sbin/nologin',
   }
 
   user { $hdm::user:
