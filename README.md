@@ -75,7 +75,7 @@ The [puppetlabs-docker](https://forge.puppet.com/modules/puppetlabs/docker/readm
 The installation of Docker can not be done using the module on SLES.
 But one can use any other defined type like `docker::image` or `docker::run`.
 
-One **must** set the `acknowledge_unsupported_os` parameter to `false` and must tell the module to not manage the docker installation.
+One **must** set the `acknowledge_unsupported_os` parameter to `true` and must tell the module to not manage the docker installation.
 
 To allow full functionality, the hdm parameter for `manage_docker` must be set to `true`, as we deactivate this in module data.
 
