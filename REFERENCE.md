@@ -42,6 +42,7 @@ The following parameters are available in the `hdm` class:
 * [`method`](#-hdm--method)
 * [`manage_docker`](#-hdm--manage_docker)
 * [`version`](#-hdm--version)
+* [`container_registry_url`](#-hdm--container_registry_url)
 * [`ruby_version`](#-hdm--ruby_version)
 * [`port`](#-hdm--port)
 * [`bind_ip`](#-hdm--bind_ip)
@@ -95,6 +96,15 @@ the git tag when using rvm
 Please find the releases on HDM website: https://github.com/betadots/hdm/releases
 
 Default value: `'1.0.1'`
+
+##### <a name="-hdm--container_registry_url"></a>`container_registry_url`
+
+Data type: `String[1]`
+
+Configure another registry. Contains the host, path and container name. The version is set via the version parameter.
+e.g. ghcr.io/betadots/hdm
+
+Default value: `'ghcr.io/betadots/hdm'`
 
 ##### <a name="-hdm--ruby_version"></a>`ruby_version`
 
