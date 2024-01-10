@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [Unreleased](https://github.com/voxpupuli/puppet-hdm/tree/HEAD)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v3.0.0...HEAD)
+
+**Implemented enhancements:**
+
+- Update container env [\#72](https://github.com/voxpupuli/puppet-hdm/pull/72) ([tuxmea](https://github.com/tuxmea))
+
 ## [v3.0.0](https://github.com/voxpupuli/puppet-hdm/tree/v3.0.0) (2023-06-19)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v2.2.1...v3.0.0)
