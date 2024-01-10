@@ -51,12 +51,12 @@ class hdm::docker {
     ensure => file,
   }
 
-  docker::image { 'ghcr.io/betadots/hdm':
+  docker::image { $hdm::container_registry_url:
     image_tag => $hdm::version,
   }
 
   docker::run { 'hdm':
-    image    => "ghcr.io/betadots/hdm:${hdm::version}",
+    image    => "${hdm::container_registry_url}:${hdm::version}",
     env      => [
       "TZ=${$hdm::timezone}",
       "RAILS_DEVELOPMENT_HOSTS=${hdm::hostname}",
