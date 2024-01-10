@@ -18,6 +18,7 @@
   - [Major Update](#major-update)
   - [Setup](#setup)
     - [Setup Requirements](#setup-requirements)
+    - [SLES and Docker module](#sles-and-docker-module)
     - [Beginning with betadots HDM](#beginning-with-betadots-hdm)
   - [Reference](#reference)
   - [Limitations](#limitations)
@@ -66,6 +67,28 @@ If you want to install HDM using RVM, you need the following modules:
 - golja/gnupg - min version 1.2.3
 - puppetlabs/vcsrepo - min version 5.2.0
 - puppet/systemd     - min version 3.10.0
+
+### SLES and Docker module
+
+The [puppetlabs-docker](https://forge.puppet.com/modules/puppetlabs/docker/readme) Module lacks official SLES and SuSe support. Yet: the module is usable on SLES.
+
+The installation of Docker can not be done using the module on SLES.
+But one can use any other defined type like `docker::image` or `docker::run`.
+
+One **must** set the `acknowledge_unsupported_os` parameter to `false` and must tell the module to not manage the docker installation.
+
+To allow full functionality, the hdm parameter for `manage_docker` must be set to `true`, as we deactivate this in module data.
+
+Hiera:
+
+```yaml
+---
+# Allow Docker to work on SLES
+docker::acknowledge_unsupported_os: true
+docker::manage_package: false
+# Enable HDM to use docker module on SLES
+hdm::manage_docker: true
+```
 
 ### Beginning with betadots HDM
 
