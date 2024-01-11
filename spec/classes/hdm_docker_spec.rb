@@ -12,6 +12,15 @@ describe 'hdm' do
           'version' => '1.0.1',
         }
       end
+      let(:pre_condition) do
+        if facts[:os]['family'] == 'Suse'
+          '
+            class { "docker":
+              acknowledge_unsupported_os => true,
+            }
+          '
+        end
+      end
 
       it { is_expected.to compile.with_all_deps }
       it { is_expected.to contain_class('docker') }

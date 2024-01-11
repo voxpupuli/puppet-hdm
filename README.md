@@ -73,11 +73,11 @@ If you want to install HDM using RVM, you need the following modules:
 The [puppetlabs-docker](https://forge.puppet.com/modules/puppetlabs/docker/readme) Module lacks official SLES and SuSe support. Yet: the module is usable on SLES.
 
 The installation of Docker can not be done using the module on SLES.
-But one can use any other defined type like `docker::image` or `docker::run`.
+Instead one must install Docker separately within a profile class.
 
-One **must** set the `acknowledge_unsupported_os` parameter to `true` and must tell the module to not manage the docker installation.
+But any other defined type like `docker::image` or `docker::run` is working.
 
-To allow full functionality, the hdm parameter for `manage_docker` must be set to `true`, as we deactivate this in module data.
+One **must** set the `acknowledge_unsupported_os` parameter to `true` to prevent the Docker module from failing on SuSe systems.
 
 Hiera:
 
@@ -85,9 +85,6 @@ Hiera:
 ---
 # Allow Docker to work on SLES
 docker::acknowledge_unsupported_os: true
-docker::manage_package: false
-# Enable HDM to use docker module on SLES
-hdm::manage_docker: true
 ```
 
 ### Beginning with betadots HDM
