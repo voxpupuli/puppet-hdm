@@ -76,6 +76,9 @@
 #   Puppet environments (similar to puppet config code_dir)
 #   defaults to '/etc/puppetlabs/code'
 #
+# @param disable_authentication Disable user and login
+#   This makes HDM available to anyone.
+#
 # @param allow_encryption Specify if HDM should use EYAML
 #   Needs HDM access to EYAML keys (public and private)
 #   Values for keys are taken from hiera.yaml file and can
@@ -142,11 +145,12 @@ class hdm (
   Stdlib::Unixpath              $puppet_code_dir       = '/etc/puppetlabs/code',
   String[1]                     $hdm_hiera_config_file = 'hiera.yaml',
   # additional application parameter
-  Boolean                        $allow_encryption      = false,
-  Boolean                        $read_only             = true,
-  Optional[Hdm::Gitdata]         $git_data              = undef,
-  Optional[Hdm::Ldap_settings]   $ldap_settings         = undef,
-  Optional[Sensitive[String[1]]] $ldap_bind_dn_password = undef,
+  Boolean                        $disable_authentication = false,
+  Boolean                        $allow_encryption       = false,
+  Boolean                        $read_only              = true,
+  Optional[Hdm::Gitdata]         $git_data               = undef,
+  Optional[Hdm::Ldap_settings]   $ldap_settings          = undef,
+  Optional[Sensitive[String[1]]] $ldap_bind_dn_password  = undef,
 ) {
   if $ldap_settings {
     if $ldap_bind_dn_password {
