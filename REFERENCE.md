@@ -55,6 +55,7 @@ The following parameters are available in the `hdm` class:
 * [`group`](#-hdm--group)
 * [`puppetdb_settings`](#-hdm--puppetdb_settings)
 * [`puppet_code_dir`](#-hdm--puppet_code_dir)
+* [`disable_authentication`](#-hdm--disable_authentication)
 * [`allow_encryption`](#-hdm--allow_encryption)
 * [`read_only`](#-hdm--read_only)
 * [`git_data`](#-hdm--git_data)
@@ -231,6 +232,15 @@ Puppet environments (similar to puppet config code_dir)
 defaults to '/etc/puppetlabs/code'
 
 Default value: `'/etc/puppetlabs/code'`
+
+##### <a name="-hdm--disable_authentication"></a>`disable_authentication`
+
+Data type: `Boolean`
+
+Disable user and login
+This makes HDM available to anyone.
+
+Default value: `false`
 
 ##### <a name="-hdm--allow_encryption"></a>`allow_encryption`
 
