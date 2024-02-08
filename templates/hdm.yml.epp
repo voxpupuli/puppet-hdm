@@ -7,6 +7,9 @@
     <%= $key %>: <%= $value %>
   <%- } -%>
   hiera_config_file: "<%= $hdm::hdm_hiera_config_file %>"
+<%- if ! $hdm::hiera_function_mapping.empty { -%>
+  custom_lookup_function_mapping: <%= $hdm::hiera_function_mapping %>
+<%- } -%>
   config_dir: <%= $hdm::puppet_code_dir %>
   authentication_disabled: <%= $hdm::disable_authentication %>
 <%- if ! $hdm::final_ldap_settings.empty { -%>

@@ -122,6 +122,14 @@
 # @param hdm_hiera_config_file Set to another file if you
 #   want HDM to not use hiera.yaml.
 #
+# @param hiera_function_mapping If you are using a self developed lookup
+#   function, HDM will thow an error as HDM only can deal with yaml and
+#   eyaml lookup functions.
+#   This parameter allows to set a mapping:
+#   ```
+#     'eyaml_lookup_key'
+#   ```
+#
 # @example
 #   include hdm
 class hdm (
@@ -151,6 +159,7 @@ class hdm (
   Optional[Hdm::Gitdata]         $git_data               = undef,
   Optional[Hdm::Ldap_settings]   $ldap_settings          = undef,
   Optional[Sensitive[String[1]]] $ldap_bind_dn_password  = undef,
+  Optional[Hdm::Functionmapping] $hiera_function_mapping = undef,
 ) {
   if $ldap_settings {
     if $ldap_bind_dn_password {

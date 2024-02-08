@@ -17,6 +17,7 @@
 
 ### Data types
 
+* [`Hdm::Functionmapping`](#Hdm--Functionmapping)
 * [`Hdm::Gitdata`](#Hdm--Gitdata): type to enforce git settings for HDM
 * [`Hdm::Ldap_settings`](#Hdm--Ldap_settings): type to enforce ldap settings for HDM
 * [`Hdm::Puppetdb`](#Hdm--Puppetdb): type to enforce puppetdb settings for HDM
@@ -62,6 +63,7 @@ The following parameters are available in the `hdm` class:
 * [`ldap_settings`](#-hdm--ldap_settings)
 * [`ldap_bind_dn_password`](#-hdm--ldap_bind_dn_password)
 * [`hdm_hiera_config_file`](#-hdm--hdm_hiera_config_file)
+* [`hiera_function_mapping`](#-hdm--hiera_function_mapping)
 
 ##### <a name="-hdm--method"></a>`method`
 
@@ -321,7 +323,27 @@ want HDM to not use hiera.yaml.
 
 Default value: `'hiera.yaml'`
 
+##### <a name="-hdm--hiera_function_mapping"></a>`hiera_function_mapping`
+
+Data type: `Optional[Hdm::Functionmapping]`
+
+If you are using a self developed lookup
+function, HDM will thow an error as HDM only can deal with yaml and
+eyaml lookup functions.
+This parameter allows to set a mapping:
+```
+  'eyaml_lookup_key'
+```
+
+Default value: `undef`
+
 ## Data types
+
+### <a name="Hdm--Functionmapping"></a>`Hdm::Functionmapping`
+
+The Hdm::Functionmapping data type.
+
+Alias of `Enum['eyaml_lookup_key']`
 
 ### <a name="Hdm--Gitdata"></a>`Hdm::Gitdata`
 
