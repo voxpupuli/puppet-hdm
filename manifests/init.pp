@@ -122,6 +122,15 @@
 # @param hdm_hiera_config_file Set to another file if you
 #   want HDM to not use hiera.yaml.
 #
+# @param custom_lookup_function If you use your own developed hiera
+#   lookup function, HDM needs to know if the function returns yaml
+#   or eyaml data.
+#   Example:
+#   ```
+#     {
+#       'functon_name' => '<yaml|eyaml>'
+#     }
+#
 # @example
 #   include hdm
 class hdm (
@@ -151,6 +160,7 @@ class hdm (
   Optional[Hdm::Gitdata]         $git_data               = undef,
   Optional[Hdm::Ldap_settings]   $ldap_settings          = undef,
   Optional[Sensitive[String[1]]] $ldap_bind_dn_password  = undef,
+  Optional[Hash[String,Enum['yaml', 'eyaml']]]  $custom_lookup_function = undef,
 ) {
   if $ldap_settings {
     if $ldap_bind_dn_password {
