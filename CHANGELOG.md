@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.2.0](https://github.com/voxpupuli/puppet-hdm/tree/v3.2.0) (2024-03-14)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v3.1.0...v3.2.0)
+
+**Implemented enhancements:**
+
+- Manage option to use a custom lookup function [\#80](https://github.com/voxpupuli/puppet-hdm/pull/80) ([tuxmea](https://github.com/tuxmea))
+- HDM supports disabling authentication. [\#77](https://github.com/voxpupuli/puppet-hdm/pull/77) ([tuxmea](https://github.com/tuxmea))
+
 ## [v3.1.0](https://github.com/voxpupuli/puppet-hdm/tree/v3.1.0) (2024-01-11)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v3.0.0...v3.1.0)
