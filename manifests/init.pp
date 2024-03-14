@@ -160,7 +160,7 @@ class hdm (
   Optional[Hdm::Gitdata]         $git_data               = undef,
   Optional[Hdm::Ldap_settings]   $ldap_settings          = undef,
   Optional[Sensitive[String[1]]] $ldap_bind_dn_password  = undef,
-  Optional[Hash[String,Enum['yaml', 'eyaml']]]  $custom_lookup_function = undef,
+  Hash[String[1],Enum['yaml', 'eyaml']]  $custom_lookup_function = {},
 ) {
   if $ldap_settings {
     if $ldap_bind_dn_password {
