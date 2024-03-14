@@ -15,7 +15,7 @@
     <%= $key %>: <%= $value %>
   <%- } -%>
 <%- } -%>
-<%- if ! $hdm::custom_lookup_function.empty { -%>
+<%- unless $hdm::custom_lookup_function.empty { -%>
   custom_lookup_function_mapping:
     <%- $hdm::custom_lookup_function.each |String $key, String $value| { -%>
     <%= $key %>: <%= $value %>
