@@ -324,7 +324,7 @@ Default value: `'hiera.yaml'`
 
 ##### <a name="-hdm--custom_lookup_function"></a>`custom_lookup_function`
 
-Data type: `Optional[Hash[String,Enum['yaml', 'eyaml']]]`
+Data type: `Hash[String[1],Enum['yaml', 'eyaml']]`
 
 If you use your own developed hiera
 lookup function, HDM needs to know if the function returns yaml
@@ -335,7 +335,7 @@ Example:
     'functon_name' => '<yaml|eyaml>'
   }
 
-Default value: `undef`
+Default value: `{}`
 
 ## Data types
 
