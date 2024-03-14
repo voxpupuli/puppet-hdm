@@ -62,6 +62,7 @@ The following parameters are available in the `hdm` class:
 * [`ldap_settings`](#-hdm--ldap_settings)
 * [`ldap_bind_dn_password`](#-hdm--ldap_bind_dn_password)
 * [`hdm_hiera_config_file`](#-hdm--hdm_hiera_config_file)
+* [`custom_lookup_function`](#-hdm--custom_lookup_function)
 
 ##### <a name="-hdm--method"></a>`method`
 
@@ -320,6 +321,21 @@ Set to another file if you
 want HDM to not use hiera.yaml.
 
 Default value: `'hiera.yaml'`
+
+##### <a name="-hdm--custom_lookup_function"></a>`custom_lookup_function`
+
+Data type: `Hash[String[1],Enum['yaml', 'eyaml']]`
+
+If you use your own developed hiera
+lookup function, HDM needs to know if the function returns yaml
+or eyaml data.
+Example:
+```
+  {
+    'functon_name' => '<yaml|eyaml>'
+  }
+
+Default value: `{}`
 
 ## Data types
 
