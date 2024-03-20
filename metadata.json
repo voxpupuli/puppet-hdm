@@ -26,7 +26,7 @@
     },
     {
       "name": "puppet/rvm",
-      "version_requirement": ">= 2.0.0 < 3.0.0"
+      "version_requirement": ">= 2.0.0 < 4.0.0"
     },
     {
       "name": "puppetlabs/apt",
