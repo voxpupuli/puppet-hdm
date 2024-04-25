@@ -97,14 +97,14 @@ Version is the image tag name when using docker and
 the git tag when using rvm
 Please find the releases on HDM website: https://github.com/betadots/hdm/releases
 
-Default value: `'1.0.1'`
+Default value: `'2.1.0'`
 
 ##### <a name="-hdm--container_registry_url"></a>`container_registry_url`
 
 Data type: `String[1]`
 
-Configure another registry. Contains the host, path and container name. The version is set via the version parameter.
-e.g. ghcr.io/betadots/hdm
+Configure another registry. Contains the host, path and container name.
+The version is set via the version parameter. e.g. ghcr.io/betadots/hdm
 
 Default value: `'ghcr.io/betadots/hdm'`
 
@@ -115,7 +115,7 @@ Data type: `String[1]`
 Select the ruby version when installing using rvm
 Please check [hdm ruby version requirement](https://github.com/betadots/hdm/blob/main/.ruby-version)
 
-Default value: `'3.1.2'`
+Default value: `'3.3.1'`
 
 ##### <a name="-hdm--port"></a>`port`
 
