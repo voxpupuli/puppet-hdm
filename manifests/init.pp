@@ -19,8 +19,8 @@
 #   the git tag when using rvm
 #   Please find the releases on HDM website: https://github.com/betadots/hdm/releases
 #
-# @param container_registry_url Configure another registry. Contains the host, path and container name. The version is set via the version parameter.
-#   e.g. ghcr.io/betadots/hdm
+# @param container_registry_url Configure another registry. Contains the host, path and container name.
+#   The version is set via the version parameter. e.g. ghcr.io/betadots/hdm
 #
 # @param ruby_version Select the ruby version when installing using rvm
 #   Please check [hdm ruby version requirement](https://github.com/betadots/hdm/blob/main/.ruby-version)
@@ -133,13 +133,14 @@
 #
 # @example
 #   include hdm
+#
 class hdm (
   # installation parameter
-  String[1]                     $version               = '1.0.1',
+  String[1]                     $version               = '2.1.0',
   Enum['docker', 'rvm']         $method                = 'docker',
   String[1]                     $container_registry_url = 'ghcr.io/betadots/hdm',
   Boolean                       $manage_docker         = true,
-  String[1]                     $ruby_version          = '3.1.2',
+  String[1]                     $ruby_version          = '3.3.1',
   # required application parameter
   Stdlib::Port                  $port                  = 3000,
   Stdlib::IP::Address::Nosubnet $bind_ip               = '0.0.0.0',
