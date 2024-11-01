@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.3.0](https://github.com/voxpupuli/puppet-hdm/tree/v3.3.0) (2024-11-01)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v3.2.0...v3.3.0)
+
+**Implemented enhancements:**
+
+- Update ruby version and hdm version defaults [\#89](https://github.com/voxpupuli/puppet-hdm/pull/89) ([rwaffen](https://github.com/rwaffen))
+- Add Puppet 8 support [\#87](https://github.com/voxpupuli/puppet-hdm/pull/87) ([zilchms](https://github.com/zilchms))
+- puppetlabs/docker: Allow 9.x [\#86](https://github.com/voxpupuli/puppet-hdm/pull/86) ([zilchms](https://github.com/zilchms))
+- puppetlabs/vcsrepo: Allow 6.x [\#85](https://github.com/voxpupuli/puppet-hdm/pull/85) ([zilchms](https://github.com/zilchms))
+- puppet/systemd: Allow 6.x [\#84](https://github.com/voxpupuli/puppet-hdm/pull/84) ([zilchms](https://github.com/zilchms))
+- puppet/rvm: Allow 3.x [\#83](https://github.com/voxpupuli/puppet-hdm/pull/83) ([zilchms](https://github.com/zilchms))
+- puppetlabs/stdlib: allow 9.x [\#82](https://github.com/voxpupuli/puppet-hdm/pull/82) ([zilchms](https://github.com/zilchms))
+
+**Merged pull requests:**
+
+- Update HDM [\#96](https://github.com/voxpupuli/puppet-hdm/pull/96) ([tuxmea](https://github.com/tuxmea))
+- update puppet-systemd upper bound to 8.0.0 [\#91](https://github.com/voxpupuli/puppet-hdm/pull/91) ([TheMeier](https://github.com/TheMeier))
+
 ## [v3.2.0](https://github.com/voxpupuli/puppet-hdm/tree/v3.2.0) (2024-03-14)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v3.1.0...v3.2.0)
