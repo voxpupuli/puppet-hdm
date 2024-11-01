@@ -72,6 +72,10 @@
 #     }
 #   ```
 #
+# @param puppet_dir The path where HDM can find the global
+#   hiera.yaml file
+#   defaults to '/etc/puppetlabs'
+#
 # @param puppet_code_dir The path where HDM can find deployed
 #   Puppet environments (similar to puppet config code_dir)
 #   defaults to '/etc/puppetlabs/code'
@@ -136,7 +140,7 @@
 #
 class hdm (
   # installation parameter
-  String[1]                     $version               = '2.1.0',
+  String[1]                     $version               = '3.0.0',
   Enum['docker', 'rvm']         $method                = 'docker',
   String[1]                     $container_registry_url = 'ghcr.io/betadots/hdm',
   Boolean                       $manage_docker         = true,
@@ -153,6 +157,7 @@ class hdm (
   String[1]                     $git_url               = 'https://github.com/betadots/hdm.git',
   Hdm::Puppetdb                 $puppetdb_settings     = { 'server' => 'http://localhost:8080', },
   Stdlib::Unixpath              $puppet_code_dir       = '/etc/puppetlabs/code',
+  Stdlib::Unixpath              $puppet_dir            = '/etc/puppetlabs',
   String[1]                     $hdm_hiera_config_file = 'hiera.yaml',
   # additional application parameter
   Boolean                        $disable_authentication = false,

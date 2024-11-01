@@ -54,6 +54,7 @@ The following parameters are available in the `hdm` class:
 * [`user`](#-hdm--user)
 * [`group`](#-hdm--group)
 * [`puppetdb_settings`](#-hdm--puppetdb_settings)
+* [`puppet_dir`](#-hdm--puppet_dir)
 * [`puppet_code_dir`](#-hdm--puppet_code_dir)
 * [`disable_authentication`](#-hdm--disable_authentication)
 * [`allow_encryption`](#-hdm--allow_encryption)
@@ -97,7 +98,7 @@ Version is the image tag name when using docker and
 the git tag when using rvm
 Please find the releases on HDM website: https://github.com/betadots/hdm/releases
 
-Default value: `'2.1.0'`
+Default value: `'3.0.0'`
 
 ##### <a name="-hdm--container_registry_url"></a>`container_registry_url`
 
@@ -223,6 +224,16 @@ Using SSL cert:
 ```
 
 Default value: `{ 'server' => 'http://localhost:8080', }`
+
+##### <a name="-hdm--puppet_dir"></a>`puppet_dir`
+
+Data type: `Stdlib::Unixpath`
+
+The path where HDM can find the global
+hiera.yaml file
+defaults to '/etc/puppetlabs'
+
+Default value: `'/etc/puppetlabs'`
 
 ##### <a name="-hdm--puppet_code_dir"></a>`puppet_code_dir`
 

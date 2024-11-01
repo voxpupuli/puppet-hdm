@@ -14,7 +14,7 @@
     },
     {
       "name": "puppetlabs/docker",
-      "version_requirement": ">= 4.4.0 < 10.0.0"
+      "version_requirement": ">= 4.4.0 < 11.0.0"
     },
     {
       "name": "puppetlabs/vcsrepo",
@@ -42,7 +42,8 @@
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
         "7",
-        "8"
+        "8",
+        "9"
       ]
     },
     {
@@ -55,7 +56,8 @@
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-        "8"
+        "8",
+        "9"
       ]
     },
     {
@@ -68,14 +70,16 @@
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "10",
-        "11"
+        "11",
+        "12"
       ]
     },
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
         "18.04",
-        "20.04"
+        "20.04",
+        "22.04"
       ]
     },
     {
