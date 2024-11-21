@@ -19,14 +19,14 @@ describe 'hdm' do
       let(:params) do
         {
           'method' => 'docker',
-          'version' => '1.0.1',
+          'version' => '3.0.0',
         }
       end
 
       it { is_expected.to compile.with_all_deps }
       it { is_expected.to contain_class('hdm::docker') }
       it { is_expected.to contain_class('docker') }
-      it { is_expected.to contain_docker__image('ghcr.io/betadots/hdm') }
+      it { is_expected.to contain_docker__image('ghcr.io/betadots/hdm').with('image_tag' => '3.0.0') }
       it { is_expected.to contain_file('/etc/hdm') }
       it { is_expected.to contain_file('/etc/hdm/certs') }
       it { is_expected.to contain_file('/etc/hdm/db') }
