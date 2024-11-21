@@ -4,12 +4,13 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v3.3.0](https://github.com/voxpupuli/puppet-hdm/tree/v3.3.0) (2024-11-01)
+## [v3.3.0](https://github.com/voxpupuli/puppet-hdm/tree/v3.3.0) (2024-11-21)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v3.2.0...v3.3.0)
 
 **Implemented enhancements:**
 
+- Updates on config and spec [\#98](https://github.com/voxpupuli/puppet-hdm/pull/98) ([tuxmea](https://github.com/tuxmea))
 - Update ruby version and hdm version defaults [\#89](https://github.com/voxpupuli/puppet-hdm/pull/89) ([rwaffen](https://github.com/rwaffen))
 - Add Puppet 8 support [\#87](https://github.com/voxpupuli/puppet-hdm/pull/87) ([zilchms](https://github.com/zilchms))
 - puppetlabs/docker: Allow 9.x [\#86](https://github.com/voxpupuli/puppet-hdm/pull/86) ([zilchms](https://github.com/zilchms))
