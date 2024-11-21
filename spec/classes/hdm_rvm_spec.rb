@@ -28,12 +28,12 @@ describe 'hdm' do
       it { is_expected.to contain_exec('bundle install') }
       it { is_expected.to contain_exec('bundle rails credentials') }
       it { is_expected.to contain_systemd__unit_file('hdm.service') }
-      if os_facts[:os]['family'] == 'RedHat' and os_facts[:os]['release']['major'].to_i < 8
+
+      if os_facts[:os]['family'] == 'RedHat' && os_facts[:os]['release']['major'].to_i < 8
         it { is_expected.to contain_package('centos-release-scl') }
         it { is_expected.to contain_package('devtoolset-7') }
         it { is_expected.to contain_exec('update sqlite') }
       end
-
     end
   end
 end
