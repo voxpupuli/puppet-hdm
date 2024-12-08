@@ -56,11 +56,11 @@ class hdm::docker {
   }
 
   $volumes = [
-  "${hdm::hdm_path}:${hdm::hdm_path}",
-  "${hdm::puppet_dir}:${hdm::puppet_dir}:ro",
-  "${hdm::puppet_code_dir}:${hdm::puppet_code_dir}:ro",
-  "${hdm::hdm_path}/hdm.yml:/hdm/config/hdm.yml:ro",
-  "${hdm::hdm_path}/database.yml:/hdm/config/database.yml:ro",
+    "${hdm::hdm_path}:${hdm::hdm_path}",
+    "${hdm::puppet_dir}:${hdm::puppet_dir}:ro",
+    "${hdm::puppet_code_dir}:${hdm::puppet_code_dir}:ro",
+    "${hdm::hdm_path}/hdm.yml:/hdm/config/hdm.yml:ro",
+    "${hdm::hdm_path}/database.yml:/hdm/config/database.yml:ro",
   ]
   if $hdm::enable_global_hiera {
     $_volumes = $volumes
