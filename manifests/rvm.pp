@@ -7,6 +7,32 @@
 class hdm::rvm {
   assert_private()
 
+  # All exec rsources need the rvm environment
+  Exec {
+    environment => [
+      "GEM_HOME=/usr/local/rvm/gems/ruby-${hdm::ruby_version}",
+      "GEM_PATH=/usr/local/rvm/gems/ruby-${hdm::ruby_version}:/usr/local/rvm/gems/ruby-${hdm::ruby_version}@global",
+      "MY_RUBY_HOME=>/usr/local/rvm/rubies/ruby-${hdm::ruby_version}",
+      "IRBRC=/usr/local/rvm/rubies/ruby-${hdm::ruby_version}/.irbrc",
+      "RUBY_VERSION=ruby-${hdm::ruby_version}",
+    ],
+  }
+
+  # CentOS needs CRB repo (libyaml-devel)
+  if $facts['os']['name'] == 'CentOS' {
+    yumrepo { 'crb':
+      ensure          => 'present',
+      descr           => 'CentOS Stream $releasever - CRB',
+      enabled         => '1',
+      gpgcheck        => '1',
+      gpgkey          => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial',
+      metadata_expire => '6h',
+      metalink        => 'https://mirrors.centos.org/metalink?repo=centos-crb-$stream&arch=$basearch&protocol=https,http',
+      repo_gpgcheck   => '0',
+    }
+  }
+
+
   group { $hdm::group:
     ensure => present,
   }
@@ -43,34 +69,6 @@ class hdm::rvm {
     require      => Rvm_system_ruby["ruby-${hdm::ruby_version}"],
   }
 
-  # Fix for old g++ and sqlite3
-  case $facts['os']['family'] {
-    'RedHat': {
-      if versioncmp($facts['os']['release']['major'], '8') < 0 {
-        package { 'centos-release-scl':
-          ensure => present,
-        }
-
-        package { 'devtoolset-7':
-          ensure => present,
-        }
-
-        $exec_prefix = 'scl enable devtoolset-7 '
-
-        exec { 'update sqlite':
-          command => 'yum install -y https://kojipkgs.fedoraproject.org//packages/sqlite/3.8.11/1.fc21/x86_64/sqlite-devel-3.8.11-1.fc21.x86_64.rpm https://kojipkgs.fedoraproject.org//packages/sqlite/3.8.11/1.fc21/x86_64/sqlite-3.8.11-1.fc21.x86_64.rpm',
-          path    => $facts['path'],
-          unless  => 'rpm -q sqlite | grep 3.8',
-        }
-      } else {
-        $exec_prefix = ''
-      }
-    }
-    default: {
-      $exec_prefix = ''
-    }
-  }
-
   vcsrepo { $hdm::hdm_path:
     ensure   => present,
     provider => 'git',
@@ -79,7 +77,7 @@ class hdm::rvm {
   }
 
   exec { 'bundle config path':
-    command  => "source $(rvm ${hdm::ruby_version} do rvm env --path) && rvm ${hdm::ruby_version} do bundle config set --local path 'vendor/bundle'",
+    command  => "rvm ${hdm::ruby_version} do bundle config set --local path 'vendor/bundle'",
     cwd      => $hdm::hdm_path,
     path     => "/usr/local/rvm/bin:${facts['path']}",
     unless   => 'grep vendor/bundle .bundle/config',
@@ -87,7 +85,7 @@ class hdm::rvm {
   }
 
   exec { 'bundle config development':
-    command  => "source $(rvm ${hdm::ruby_version} do rvm env --path) && rvm ${hdm::ruby_version} do bundle config set --local with 'development'",
+    command  => "rvm ${hdm::ruby_version} do bundle config set --local with 'development'",
     cwd      => $hdm::hdm_path,
     path     => "/usr/local/rvm/bin:${facts['path']}",
     unless   => 'grep development .bundle/config',
@@ -95,7 +93,7 @@ class hdm::rvm {
   }
 
   exec { 'bundle install':
-    command  => "${exec_prefix} 'source $(rvm ${hdm::ruby_version} do rvm env --path) && rvm ${hdm::ruby_version} do bundle install --jobs $(nproc) && touch .bundle_install_finished'",
+    command  => "rvm ${hdm::ruby_version} do bundle install --jobs $(nproc) && touch .bundle_install_finished",
     cwd      => $hdm::hdm_path,
     path     => "/usr/local/rvm/bin:${facts['path']}",
     creates  => "${hdm::hdm_path}/.bundle_install_finished",
@@ -109,7 +107,7 @@ class hdm::rvm {
   }
 
   exec { 'bundle db:setup':
-    command  => "source $(rvm ${hdm::ruby_version} do rvm env --path) && rvm ${hdm::ruby_version} do bundle exec rails db:setup && touch .bundle_db_setup_finished",
+    command  => "rvm ${hdm::ruby_version} do bundle exec rails db:setup && touch .bundle_db_setup_finished",
     cwd      => $hdm::hdm_path,
     path     => "/usr/local/rvm/bin:${facts['path']}",
     creates  => "${hdm::hdm_path}/.bundle_db_setup_finished",
@@ -117,7 +115,7 @@ class hdm::rvm {
   }
 
   exec { 'bundle rails credentials':
-    command  => "source $(rvm ${hdm::ruby_version} do rvm env --path) && rvm ${hdm::ruby_version} do echo 'secret' | EDITOR='vim' bundle exec rails credentials:edit",
+    command  => "rvm ${hdm::ruby_version} do echo 'secret' | EDITOR='vim' bundle exec rails credentials:edit",
     cwd      => $hdm::hdm_path,
     path     => "/usr/local/rvm/bin:${facts['path']}",
     creates  => "${hdm::hdm_path}/config/credentials.yml.enc",
