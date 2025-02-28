@@ -30,6 +30,9 @@ class hdm::rvm {
       metalink        => 'https://mirrors.centos.org/metalink?repo=centos-crb-$stream&arch=$basearch&protocol=https,http',
       repo_gpgcheck   => '0',
     }
+    package { 'libyaml-devel':
+      ensure => present,
+    }
   }
 
   group { $hdm::group:
