@@ -30,7 +30,6 @@ describe 'hdm' do
       it { is_expected.to contain_exec('bundle install') }
       it { is_expected.to contain_exec('bundle rails credentials') }
       it { is_expected.to contain_systemd__unit_file('hdm.service') }
-
     end
   end
 end
