@@ -14,8 +14,11 @@ describe 'hdm' do
       end
 
       it { is_expected.to compile.with_all_deps }
-      it { is_expected.to contain_yumrepo('crb') }
-      it { is_expected.to contain_package('libyaml-devel') }
+
+      if os_facts[:os]['name'] == 'CentOS'
+        it { is_expected.to contain_yumrepo('crb') }
+        it { is_expected.to contain_package('libyaml-devel') }
+      end
       it { is_expected.to contain_class('hdm::rvm') }
       it { is_expected.to contain_rvm__system_user('hdm') }
       it { is_expected.to contain_rvm_gem('bundler') }
