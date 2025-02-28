@@ -32,7 +32,6 @@ class hdm::rvm {
     }
   }
 
-
   group { $hdm::group:
     ensure => present,
   }
@@ -76,6 +75,7 @@ class hdm::rvm {
     revision => $hdm::version,
   }
 
+  # set bundle config path
   exec { 'bundle config path':
     command  => "rvm ${hdm::ruby_version} do bundle config set --local path 'vendor/bundle'",
     cwd      => $hdm::hdm_path,
@@ -84,6 +84,7 @@ class hdm::rvm {
     provider => 'shell',
   }
 
+  # set bundle config development
   exec { 'bundle config development':
     command  => "rvm ${hdm::ruby_version} do bundle config set --local with 'development'",
     cwd      => $hdm::hdm_path,
@@ -92,6 +93,7 @@ class hdm::rvm {
     provider => 'shell',
   }
 
+  # run bundle install
   exec { 'bundle install':
     command  => "rvm ${hdm::ruby_version} do bundle install --jobs $(nproc) && touch .bundle_install_finished",
     cwd      => $hdm::hdm_path,
@@ -106,6 +108,7 @@ class hdm::rvm {
     notify  => Service['hdm.service'],
   }
 
+  # run bundle hdm db setup
   exec { 'bundle db:setup':
     command  => "rvm ${hdm::ruby_version} do bundle exec rails db:setup && touch .bundle_db_setup_finished",
     cwd      => $hdm::hdm_path,
@@ -114,6 +117,7 @@ class hdm::rvm {
     provider => 'shell',
   }
 
+  # generate rails credentials
   exec { 'bundle rails credentials':
     command  => "rvm ${hdm::ruby_version} do echo 'secret' | EDITOR='vim' bundle exec rails credentials:edit",
     cwd      => $hdm::hdm_path,
