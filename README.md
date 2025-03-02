@@ -59,14 +59,14 @@ The puppet-hdm module needs puppetlabs/stdlib as we use some of the stdlib data 
 
 If you want to make use of the docker container, you need the following module:
 
-- puppetlabs/docker - min version 4.4.0
+- puppetlabs/docker - min version 4.4.0 - tested with v10.1.0
 
 If you want to install HDM using RVM, you need the following modules:
 
-- puppet/rvm - min version 2.0.0
-- golja/gnupg - min version 1.2.3
-- puppetlabs/vcsrepo - min version 5.2.0
-- puppet/systemd     - min version 3.10.0
+- puppet/rvm - min version 3.0.0
+- golja/gnupg - min version 1.2.3 - for Puppet 8 a fork must be used: see https://github.com/dgolja/golja-gnupg/pull/42 and use https://github.com/flepoutre/golja-gnupg - master branch
+- puppetlabs/vcsrepo - min version 7.0.0
+- puppet/systemd     - min version 8.1.0
 
 ### SLES and Docker module
 
@@ -87,7 +87,9 @@ Hiera:
 docker::acknowledge_unsupported_os: true
 ```
 
-### Beginning with betadots HDM
+### Beginning with betadots HDMA
+
+#### Container
 
 The most simple approach is to just include the hdm class and provide the version parameter:
 
@@ -97,18 +99,97 @@ include hdm
 
 You can find the released versions on [HDM releases page](https://github.com/betadots/hdm/releases)
 ```yaml
-hdm::version: '1.0.1
+hdm::version: '3.1.0
 ```
 
 Another option is to use class resource type declaration:
 
 ```puppet
 class { 'hdm':
-  version => '1.0.1',
+  version => '3.1.0',
 }
 ```
 
 This will install HDM as docker container.
+
+#### RVM
+
+To run HDM directly from source, we recommend to use the vagrant setup in HDM repository.
+
+Or: use the following Puppet configuration:
+
+```ruby
+# Puppetfile
+# mod 'golja-gnupg',  '1.2.3'
+mod 'gnupg', :git => 'https://github.com/flepoutre/golja-gnupg.git', :branch => 'master'
+mod 'ipcrm-echo', '0.1.8'
+mod 'puppet-hdm', :git => 'https://github.com/voxpupuli/puppet-hdm.git', :branch => 'fix_rvm'
+mod 'puppet-rvm', '3.0.0'
+mod 'puppet-systemd', '8.1.0'
+mod 'puppetlabs-apt', '10.0.1'
+mod 'puppetlabs-concat', '9.1.0'
+mod 'puppetlabs-docker', '10.1.0'
+mod 'puppetlabs-firewall', '8.1.4'
+mod 'puppetlabs-inifile', '6.2.0'
+mod 'puppetlabs-postgresql', '10.5.0'
+mod 'puppetlabs-puppetdb', '8.1.0'
+mod 'puppetlabs-stdlib', '9.7.0'
+mod 'puppetlabs-vcsrepo'
+```
+
+```puppet
+# manifests/site.pp
+File {
+  backup => false,
+}
+$classes_hash = lookup('classes', { 'value_type' => Hash, 'default_value' => {} })
+$classes_hash.keys.sort.each |$key| {
+  if $classes_hash[$key] != '' {
+    contain $classes_hash[$key]
+  } else {
+    echo { $key:
+      message  => "Class for ${key} on ${facts['networking']['fqdn']} is disabled",
+      withpath => false,
+    }
+  }
+}
+node default {}
+```
+
+```yaml
+# hiera.yaml
+---
+version: 5
+defaults:
+  datadir: data
+  data_hash: yaml_data
+hierarchy:
+  - name: "Per-node data (yaml version)"
+    path: "nodes/%{::trusted.certname}.yaml"
+  - name: "Other YAML hierarchy levels"
+    paths:
+      - "common.yaml"
+```
+
+```yaml
+# data/nodes/<certname>.yaml
+---
+classes:
+  '90_hdm_class': 'hdm'
+  '91_puppetdb_class': 'puppetdb'
+  '92_puppetdb_master_class': 'puppetdb::master::config'
+
+hdm::version: 'main'
+hdm::method: 'rvm'
+hdm::ruby_version: '3.4.2'
+hdm::disable_authentication: true
+
+# using with foreman
+puppetdb::manage_firewall: false
+puppetdb::postgres_version: '13'
+puppetdb::manage_package_repo: false
+postgresql::globals::manage_dnf_module: false
+```
 
 ## Reference
 
@@ -116,7 +197,7 @@ Please check the [REFERENCE.md](REFERENCE.md) file.
 
 ## Limitations
 
-On SLES we can not use the puppetlabs/docker module.
+On SLES we can not use the puppetlabs/docker module fpr installation, but is still needed to pull the image and run the container..
 Instead set the manage_docker parameter to false and take care on docker package and service by yourself.
 
 ## Transfer Notice
