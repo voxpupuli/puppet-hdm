@@ -7,7 +7,7 @@
 class hdm::rvm {
   assert_private()
 
-  # All exec rsources need the rvm environment
+  # All exec resources need the rvm environment
   Exec {
     environment => [
       "GEM_HOME=/usr/local/rvm/gems/ruby-${hdm::ruby_version}",
