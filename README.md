@@ -87,7 +87,7 @@ Hiera:
 docker::acknowledge_unsupported_os: true
 ```
 
-### Beginning with betadots HDMA
+### Beginning with betadots HDM
 
 #### Container
 
@@ -197,8 +197,8 @@ Please check the [REFERENCE.md](REFERENCE.md) file.
 
 ## Limitations
 
-On SLES we can not use the puppetlabs/docker module fpr installation, but is still needed to pull the image and run the container..
-Instead set the manage_docker parameter to false and take care on docker package and service by yourself.
+On SLES we can not use the puppetlabs/docker module for installation, but is still needed to pull the image and run the container.
+Instead set the `manage_docker` parameter to false for HDM class and take care on docker package and service by yourself.
 
 ## Transfer Notice
 
