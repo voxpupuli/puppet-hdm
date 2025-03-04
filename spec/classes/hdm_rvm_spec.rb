@@ -14,6 +14,11 @@ describe 'hdm' do
       end
 
       it { is_expected.to compile.with_all_deps }
+
+      if os_facts[:os]['name'] == 'CentOS'
+        it { is_expected.to contain_yumrepo('crb') }
+        it { is_expected.to contain_package('libyaml-devel') }
+      end
       it { is_expected.to contain_class('hdm::rvm') }
       it { is_expected.to contain_rvm__system_user('hdm') }
       it { is_expected.to contain_rvm_gem('bundler') }
@@ -28,12 +33,6 @@ describe 'hdm' do
       it { is_expected.to contain_exec('bundle install') }
       it { is_expected.to contain_exec('bundle rails credentials') }
       it { is_expected.to contain_systemd__unit_file('hdm.service') }
-
-      if os_facts[:os]['family'] == 'RedHat' && os_facts[:os]['release']['major'].to_i < 8
-        it { is_expected.to contain_package('centos-release-scl') }
-        it { is_expected.to contain_package('devtoolset-7') }
-        it { is_expected.to contain_exec('update sqlite') }
-      end
     end
   end
 end
