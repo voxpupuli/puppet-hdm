@@ -24,7 +24,7 @@ describe 'hdm' do
       it { is_expected.to contain_class('hdm::rvm') }
       it { is_expected.to contain_rvm__system_user('hdm') }
       it { is_expected.to contain_rvm_gem('bundler') }
-      it { is_expected.to contain_rvm_system_ruby('ruby-3.3.1') }
+      it { is_expected.to contain_rvm_system_ruby('ruby-3.4.2') }
       it { is_expected.to contain_group('hdm') }
       it { is_expected.to contain_user('hdm') }
       it { is_expected.to contain_vcsrepo('/etc/hdm') }

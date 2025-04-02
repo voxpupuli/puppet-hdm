@@ -98,7 +98,7 @@ Version is the image tag name when using docker and
 the git tag when using rvm
 Please find the releases on HDM website: https://github.com/betadots/hdm/releases
 
-Default value: `'3.0.0'`
+Default value: `'3.2.0'`
 
 ##### <a name="-hdm--container_registry_url"></a>`container_registry_url`
 
@@ -116,7 +116,7 @@ Data type: `String[1]`
 Select the ruby version when installing using rvm
 Please check [hdm ruby version requirement](https://github.com/betadots/hdm/blob/main/.ruby-version)
 
-Default value: `'3.3.1'`
+Default value: `'3.4.2'`
 
 ##### <a name="-hdm--port"></a>`port`
 
