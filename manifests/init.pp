@@ -140,11 +140,11 @@
 #
 class hdm (
   # installation parameter
-  String[1]                     $version               = '3.0.0',
+  String[1]                     $version               = '3.2.0',
   Enum['docker', 'rvm']         $method                = 'docker',
   String[1]                     $container_registry_url = 'ghcr.io/betadots/hdm',
   Boolean                       $manage_docker         = true,
-  String[1]                     $ruby_version          = '3.3.1',
+  String[1]                     $ruby_version          = '3.4.2',
   # required application parameter
   Stdlib::Port                  $port                  = 3000,
   Stdlib::IP::Address::Nosubnet $bind_ip               = '0.0.0.0',
