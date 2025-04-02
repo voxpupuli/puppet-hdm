@@ -54,6 +54,7 @@ The following parameters are available in the `hdm` class:
 * [`user`](#-hdm--user)
 * [`group`](#-hdm--group)
 * [`puppetdb_settings`](#-hdm--puppetdb_settings)
+* [`enable_global_hiera`](#-hdm--enable_global_hiera)
 * [`puppet_dir`](#-hdm--puppet_dir)
 * [`puppet_code_dir`](#-hdm--puppet_code_dir)
 * [`disable_authentication`](#-hdm--disable_authentication)
@@ -224,6 +225,15 @@ Using SSL cert:
 ```
 
 Default value: `{ 'server' => 'http://localhost:8080', }`
+
+##### <a name="-hdm--enable_global_hiera"></a>`enable_global_hiera`
+
+Data type: `Boolean`
+
+Set to false on PE
+Disables reading global hiera.yaml file
+
+Default value: `true`
 
 ##### <a name="-hdm--puppet_dir"></a>`puppet_dir`
 
