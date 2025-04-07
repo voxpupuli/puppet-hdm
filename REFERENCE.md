@@ -63,6 +63,7 @@ The following parameters are available in the `hdm` class:
 * [`ldap_settings`](#-hdm--ldap_settings)
 * [`ldap_bind_dn_password`](#-hdm--ldap_bind_dn_password)
 * [`hdm_hiera_config_file`](#-hdm--hdm_hiera_config_file)
+* [`global_hiera_yaml`](#-hdm--global_hiera_yaml)
 * [`custom_lookup_function`](#-hdm--custom_lookup_function)
 
 ##### <a name="-hdm--method"></a>`method`
@@ -332,6 +333,14 @@ Set to another file if you
 want HDM to not use hiera.yaml.
 
 Default value: `'hiera.yaml'`
+
+##### <a name="-hdm--global_hiera_yaml"></a>`global_hiera_yaml`
+
+Data type: `Stdlib::Unixpath`
+
+Absolute path to global hiera.yaml file
+
+Default value: `'/etc/puppetlabs/puppet/hiera.yaml'`
 
 ##### <a name="-hdm--custom_lookup_function"></a>`custom_lookup_function`
 

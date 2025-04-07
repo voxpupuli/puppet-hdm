@@ -9,6 +9,7 @@
   hiera_config_file: "<%= $hdm::hdm_hiera_config_file %>"
   config_dir: <%= $hdm::puppet_code_dir %>
   authentication_disabled: <%= $hdm::disable_authentication %>
+  global_hiera_yaml: <%= $hdm::global_hiera_yaml %>
 <%- if ! $hdm::final_ldap_settings.empty { -%>
   ldap:
   <%- $hdm::final_ldap_settings.each |$key, $value| { -%>

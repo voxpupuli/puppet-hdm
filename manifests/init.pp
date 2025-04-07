@@ -126,6 +126,8 @@
 # @param hdm_hiera_config_file Set to another file if you
 #   want HDM to not use hiera.yaml.
 #
+# @param global_hiera_yaml Absolute path to global hiera.yaml file
+#
 # @param custom_lookup_function If you use your own developed hiera
 #   lookup function, HDM needs to know if the function returns yaml
 #   or eyaml data.
@@ -159,6 +161,7 @@ class hdm (
   Stdlib::Unixpath              $puppet_code_dir       = '/etc/puppetlabs/code',
   Stdlib::Unixpath              $puppet_dir            = '/etc/puppetlabs',
   String[1]                     $hdm_hiera_config_file = 'hiera.yaml',
+  Stdlib::Unixpath              $global_hiera_yaml     = '/etc/puppetlabs/puppet/hiera.yaml',
   # additional application parameter
   Boolean                        $disable_authentication = false,
   Boolean                        $allow_encryption       = false,
