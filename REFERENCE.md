@@ -56,6 +56,7 @@ The following parameters are available in the `hdm` class:
 * [`puppetdb_settings`](#-hdm--puppetdb_settings)
 * [`puppet_dir`](#-hdm--puppet_dir)
 * [`puppet_code_dir`](#-hdm--puppet_code_dir)
+* [`additional_mounts`](#-hdm--additional_mounts)
 * [`disable_authentication`](#-hdm--disable_authentication)
 * [`allow_encryption`](#-hdm--allow_encryption)
 * [`read_only`](#-hdm--read_only)
@@ -243,8 +244,23 @@ Data type: `Stdlib::Unixpath`
 The path where HDM can find deployed
 Puppet environments (similar to puppet config code_dir)
 defaults to '/etc/puppetlabs/code'
+On Puppet Enterprise with lockless deployments this must
+be set to '/etc/puppetlabs/puppetserver/code'
 
 Default value: `'/etc/puppetlabs/code'`
+
+##### <a name="-hdm--additional_mounts"></a>`additional_mounts`
+
+Data type: `Array[Stdlib::Unixpath]`
+
+Provide additional volumes, needed within
+the HDM container. e.g. Directory with ca, cert oand/or key.
+On Puppet Enterprise with lockless deployments, the code dir is a
+symbolic link. One must add
+/opt/puppetlabs/server/data/puppetserver/filesync/client/versioned-dirs'.
+The array is mapped as source:target.
+
+Default value: `[]`
 
 ##### <a name="-hdm--disable_authentication"></a>`disable_authentication`
 

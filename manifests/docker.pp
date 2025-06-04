@@ -55,6 +55,17 @@ class hdm::docker {
     image_tag => $hdm::version,
   }
 
+  $volumes = [
+    "${hdm::hdm_path}:${hdm::hdm_path}",
+    "${hdm::puppet_dir}:${hdm::puppet_dir}:ro",
+    "${hdm::puppet_code_dir}:${hdm::puppet_code_dir}:ro",
+    "${hdm::hdm_path}/hdm.yml:/hdm/config/hdm.yml:ro",
+    "${hdm::hdm_path}/database.yml:/hdm/config/database.yml:ro",
+  ]
+  $additional_volumes = $hdm::additional_mounts.map |$vol| {
+    "${vol}:${vol}:ro"
+  }
+
   docker::run { 'hdm':
     image    => "${hdm::container_registry_url}:${hdm::version}",
     env      => [
@@ -64,13 +75,7 @@ class hdm::docker {
       "HDM_PORT=${hdm::port}",
       "HDM_HOST=${hdm::hostname}",
     ],
-    volumes  => [
-      "${hdm::hdm_path}:${hdm::hdm_path}",
-      "${hdm::puppet_dir}:${hdm::puppet_dir}:ro",
-      "${hdm::puppet_code_dir}:${hdm::puppet_code_dir}:ro",
-      "${hdm::hdm_path}/hdm.yml:/hdm/config/hdm.yml:ro",
-      "${hdm::hdm_path}/database.yml:/hdm/config/database.yml:ro",
-    ],
+    volumes  => $volumes + $additional_volumes,
     hostname => $hdm::hostname,
     ports    => [$hdm::port],
     net      => 'host',
