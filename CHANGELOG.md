@@ -4,6 +4,30 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [Unreleased](https://github.com/voxpupuli/puppet-hdm/tree/HEAD)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v3.3.0...HEAD)
+
+**Breaking changes:**
+
+- fix rvm setup, drop EOL EL systems [\#103](https://github.com/voxpupuli/puppet-hdm/pull/103) ([tuxmea](https://github.com/tuxmea))
+
+**Implemented enhancements:**
+
+- Add additional mounts for docker [\#111](https://github.com/voxpupuli/puppet-hdm/pull/111) ([tuxmea](https://github.com/tuxmea))
+- Allow puppetlabs/apt 10.x [\#108](https://github.com/voxpupuli/puppet-hdm/pull/108) ([smortex](https://github.com/smortex))
+- Update HDM 3.0.0-\>3.2.0 [\#106](https://github.com/voxpupuli/puppet-hdm/pull/106) ([bastelfreak](https://github.com/bastelfreak))
+- metadata.json: Add OpenVox [\#105](https://github.com/voxpupuli/puppet-hdm/pull/105) ([jstraw](https://github.com/jstraw))
+- Add global\_hiera\_yaml parameter [\#92](https://github.com/voxpupuli/puppet-hdm/pull/92) ([tuxmea](https://github.com/tuxmea))
+
+**Closed issues:**
+
+- PE with versioned deploys need code dir array [\#110](https://github.com/voxpupuli/puppet-hdm/issues/110)
+
+**Merged pull requests:**
+
+- puppet/systemd: allow 8.x [\#101](https://github.com/voxpupuli/puppet-hdm/pull/101) ([jay7x](https://github.com/jay7x))
+
 ## [v3.3.0](https://github.com/voxpupuli/puppet-hdm/tree/v3.3.0) (2024-11-21)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v3.2.0...v3.3.0)
