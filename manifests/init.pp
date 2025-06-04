@@ -79,6 +79,15 @@
 # @param puppet_code_dir The path where HDM can find deployed
 #   Puppet environments (similar to puppet config code_dir)
 #   defaults to '/etc/puppetlabs/code'
+#   On Puppet Enterprise with lockless deployments this must
+#   be set to '/etc/puppetlabs/puppetserver/code'
+#
+# @param additional_mounts Provide additional volumes, needed within
+#   the HDM container. e.g. Directory with ca, cert oand/or key.
+#   On Puppet Enterprise with lockless deployments, the code dir is a 
+#   symbolic link. One must add
+#   /opt/puppetlabs/server/data/puppetserver/filesync/client/versioned-dirs'.
+#   The array is mapped as source:target.
 #
 # @param disable_authentication Disable user and login
 #   This makes HDM available to anyone.
@@ -159,6 +168,7 @@ class hdm (
   String[1]                     $git_url               = 'https://github.com/betadots/hdm.git',
   Hdm::Puppetdb                 $puppetdb_settings     = { 'server' => 'http://localhost:8080', },
   Stdlib::Unixpath              $puppet_code_dir       = '/etc/puppetlabs/code',
+  Array[Stdlib::Unixpath]       $additional_mounts     = [],
   Stdlib::Unixpath              $puppet_dir            = '/etc/puppetlabs',
   String[1]                     $hdm_hiera_config_file = 'hiera.yaml',
   Stdlib::Unixpath              $global_hiera_yaml     = '/etc/puppetlabs/puppet/hiera.yaml',

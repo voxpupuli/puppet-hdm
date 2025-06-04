@@ -51,5 +51,28 @@ describe 'hdm' do
       it { is_expected.to contain_file('/etc/hdm/hdm.yml').with('content' => %r{hiera_config_file: "hiera.yaml"}) }
       it { is_expected.to contain_docker__run('hdm').with('volumes' => %r{/etc/puppetlabs:/etc/puppetlabs:ro}) }
     end
+
+    context "on #{os} using docker with all parameters and additional mounts" do
+      let(:facts) { os_facts }
+      let(:params) do
+        {
+          'method' => 'docker',
+          'version' => '3.0.0',
+          'puppet_dir' => '/etc/puppetlabs',
+          'puppet_code_dir' => '/etc/puppet/code',
+          'additional_mounts' => [
+            '/opt/puppet/code',
+            '/var/puppet',
+          ],
+        }
+      end
+
+      it { is_expected.to compile.with_all_deps }
+      it { is_expected.to contain_class('docker') }
+      it { is_expected.to contain_file('/etc/hdm/hdm.yml').with('content' => %r{hiera_config_file: "hiera.yaml"}) }
+      it { is_expected.to contain_docker__run('hdm').with('volumes' => %r{/etc/puppetlabs:/etc/puppetlabs:ro}) }
+      it { is_expected.to contain_docker__run('hdm').with('volumes' => %r{/opt/puppet/code:/opt/puppet/code:ro}) }
+      it { is_expected.to contain_docker__run('hdm').with('volumes' => %r{/var/puppet:/var/puppet:ro}) }
+    end
   end
 end
