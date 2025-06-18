@@ -1,11 +1,11 @@
 ---
 fixtures:
   repositories:
-    docker: https://github.com/puppetlabs/puppetlabs-docker.git
     apt: https://github.com/puppetlabs/puppetlabs-apt.git
-    stdlib: https://github.com/puppetlabs/puppetlabs-stdlib.git
-    vcsrepo: https://github.com/puppetlabs/puppetlabs-vcsrepo.git
-    rvm: https://github.com/voxpupuli/puppet-rvm.git
-    systemd: https://github.com/voxpupuli/puppet-systemd.git
-    yumrepo_core: https://github.com/puppetlabs/puppetlabs-yumrepo_core.git
+    docker: https://github.com/puppetlabs/puppetlabs-docker.git
     gnupg: https://github.com/dgolja/golja-gnupg
+    rvm: https://github.com/voxpupuli/puppet-rvm.git
+    stdlib: https://github.com/puppetlabs/puppetlabs-stdlib.git
+    systemd: https://github.com/voxpupuli/puppet-systemd.git
+    vcsrepo: https://github.com/puppetlabs/puppetlabs-vcsrepo.git
+    yumrepo_core: https://github.com/puppetlabs/puppetlabs-yumrepo_core.git
