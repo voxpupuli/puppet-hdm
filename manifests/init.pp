@@ -126,11 +126,11 @@
 #       'base_dn'            => 'ou=hdm,dc=nodomain',
 #       'bind_dn'            => 'cn=admin,dc=nodomain',
 #       'bind_dn_password'   => 'openldap', # clear text
+#       'username_attribute' => 'mail', # where is the email in ldap - defaults to mail
+#       'filter'             => '(gid=23)', # filter for specific ldap entries
 #       'ssl_mode'           => 'start_tls', # simple, start_tls or empty (plain text)
 #       'ssl_verify'         => true, # true or false
-#       'username_attribute' => 'mail', # where is the email in ldap - defaults to mail
 #       'ca_file'            => '/etc/hdm/ca.crt',
-#       'filter'             => 'cn=tuxmea', # filter for specific ldap entries
 #     }
 #   ```
 #
