@@ -202,25 +202,25 @@ The following options are possible:
 Plain text (default)
 ```
   {
-    'server'           => 'http://localhost:8080',
+    'server' => 'http://localhost:8080',
   }
 ```
 Using PE token:
 ```
   {
-    'server'           => 'https://localhost:8081',
-    'token'            => '/etc/hdm/puppetdb.token',
-    'cacert'           => '<path to cacert>',
+    'server' => 'https://localhost:8081',
+    'token'  => '/etc/hdm/puppetdb.token',
+    'cacert' => '<path to cacert>',
   }
 ```
 Using SSL cert:
 ```
   {
-    'server'           => 'https://localhost:8081',
-    'pem'              => {
-      'key'            => '/etc/hdm/ssl.key',
-      'cert'           => '/etc/hdm/ssl.cert',
-      'ca_file'        => '/etc/hdm/ssl.ca',
+    'server' => 'https://localhost:8081',
+    'pem'    => {
+      'key'     => '/etc/hdm/ssl.key',
+      'cert'    => '/etc/hdm/ssl.cert',
+      'ca_file' => '/etc/hdm/ssl.ca',
     },
   }
 ```
@@ -304,10 +304,10 @@ Required Array of hash data:
 ```
   [
     {
-      'datadir'        => 'modules/hieradata/data',
-      'git_url'        => 'git@server:path/repo.git',
-      'path_in_repo'   => 'data',
-      'ssh_priv_key'   => '.ssh/id_rsa',
+      'datadir'      => 'modules/hieradata/data',
+      'git_url'      => 'git@server:path/repo.git',
+      'path_in_repo' => 'data',
+      'ssh_priv_key' => '.ssh/id_rsa',
     }
   ]
 ```
@@ -322,12 +322,16 @@ Config for LDAP integration
 Needs the following Hash:
 ```
   {
-    'host'             => 'localhost',
-    'port'             => 389,
-    'base_dn'          => 'ou=hdm,dc=nodomain',
-    'bind_dn'          => 'cn=admin,dc=nodomain',
-    'bind_dn_password' => 'openldap', # clear text
-    'ldaps'            =>  false,
+    'host'               => 'localhost',
+    'port'               => 389,
+    'base_dn'            => 'ou=hdm,dc=nodomain',
+    'bind_dn'            => 'cn=admin,dc=nodomain',
+    'bind_dn_password'   => 'openldap', # clear text
+    'username_attribute' => 'mail', # where is the email in ldap - defaults to mail
+    'filter'             => '(gid=23)', # filter for specific ldap entries
+    'ssl_mode'           => 'start_tls', # simple, start_tls or empty (plain text)
+    'ssl_verify'         => true, # true or false
+    'ca_file'            => '/etc/hdm/ca.crt',
   }
 ```
 
@@ -368,7 +372,7 @@ or eyaml data.
 Example:
 ```
   {
-    'functon_name' => '<yaml|eyaml>'
+    'function_name' => '<yaml|eyaml>'
   }
 
 Default value: `{}`
@@ -400,12 +404,16 @@ Alias of
 
 ```puppet
 Struct[{
-    'host'             => Stdlib::Host,
-    'port'             => Stdlib::Port,
-    'base_dn'          => String[1],
-    'bind_dn'          => String[1],
-    'bind_dn_password' => Optional[Variant[Sensitive[String[1]],String[1]]],
-    'ldaps'            => Boolean,
+    'host'               => Stdlib::Host,
+    'port'               => Stdlib::Port,
+    'base_dn'            => String[1],
+    'bind_dn'            => String[1],
+    'bind_dn_password'   => Optional[Variant[Sensitive[String[1]],String[1]]],
+    'ssl_mode'           => Optional[Enum['start_tls', 'simple']],
+    'ssl_verify'         => Optional[Boolean],
+    'username_attribute' => Optional[String[1]],
+    'ca_file'            => Optional[Stdlib::Absolutepath],
+    'filter'             => Optional[String[1]],
   }]
 ```
 
