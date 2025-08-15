@@ -49,25 +49,25 @@
 #   Plain text (default)
 #   ```
 #     {
-#       'server'           => 'http://localhost:8080',
+#       'server' => 'http://localhost:8080',
 #     }
 #   ```
 #   Using PE token:
 #   ```
 #     {
-#       'server'           => 'https://localhost:8081',
-#       'token'            => '/etc/hdm/puppetdb.token',
-#       'cacert'           => '<path to cacert>',
+#       'server' => 'https://localhost:8081',
+#       'token'  => '/etc/hdm/puppetdb.token',
+#       'cacert' => '<path to cacert>',
 #     }
 #   ```
 #   Using SSL cert:
 #   ```
 #     {
-#       'server'           => 'https://localhost:8081',
-#       'pem'              => {
-#         'key'            => '/etc/hdm/ssl.key',
-#         'cert'           => '/etc/hdm/ssl.cert',
-#         'ca_file'        => '/etc/hdm/ssl.ca',
+#       'server' => 'https://localhost:8081',
+#       'pem'    => {
+#         'key'     => '/etc/hdm/ssl.key',
+#         'cert'    => '/etc/hdm/ssl.cert',
+#         'ca_file' => '/etc/hdm/ssl.ca',
 #       },
 #     }
 #   ```
@@ -109,10 +109,10 @@
 #   ```
 #     [
 #       {
-#         'datadir'        => 'modules/hieradata/data',
-#         'git_url'        => 'git@server:path/repo.git',
-#         'path_in_repo'   => 'data',
-#         'ssh_priv_key'   => '.ssh/id_rsa',
+#         'datadir'      => 'modules/hieradata/data',
+#         'git_url'      => 'git@server:path/repo.git',
+#         'path_in_repo' => 'data',
+#         'ssh_priv_key' => '.ssh/id_rsa',
 #       }
 #     ]
 #   ```
@@ -121,12 +121,16 @@
 #   Needs the following Hash:
 #   ```
 #     {
-#       'host'             => 'localhost',
-#       'port'             => 389,
-#       'base_dn'          => 'ou=hdm,dc=nodomain',
-#       'bind_dn'          => 'cn=admin,dc=nodomain',
-#       'bind_dn_password' => 'openldap', # clear text
-#       'ldaps'            =>  false,
+#       'host'               => 'localhost',
+#       'port'               => 389,
+#       'base_dn'            => 'ou=hdm,dc=nodomain',
+#       'bind_dn'            => 'cn=admin,dc=nodomain',
+#       'bind_dn_password'   => 'openldap', # clear text
+#       'username_attribute' => 'mail', # where is the email in ldap - defaults to mail
+#       'filter'             => '(gid=23)', # filter for specific ldap entries
+#       'ssl_mode'           => 'start_tls', # simple, start_tls or empty (plain text)
+#       'ssl_verify'         => true, # true or false
+#       'ca_file'            => '/etc/hdm/ca.crt',
 #     }
 #   ```
 #
@@ -143,7 +147,7 @@
 #   Example:
 #   ```
 #     {
-#       'functon_name' => '<yaml|eyaml>'
+#       'function_name' => '<yaml|eyaml>'
 #     }
 #
 # @example
