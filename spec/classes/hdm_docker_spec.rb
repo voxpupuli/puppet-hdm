@@ -74,5 +74,30 @@ describe 'hdm' do
       it { is_expected.to contain_docker__run('hdm').with('volumes' => %r{/opt/puppet/code:/opt/puppet/code:ro}) }
       it { is_expected.to contain_docker__run('hdm').with('volumes' => %r{/var/puppet:/var/puppet:ro}) }
     end
+
+    context "on #{os} using docker with all parameters and ldap settings" do
+      let(:facts) { os_facts }
+      let(:params) do
+        {
+          'method' => 'docker',
+          'version' => '3.0.0',
+          'puppet_dir' => '/etc/puppetlabs',
+          'puppet_code_dir' => '/etc/puppet/code',
+          'ldap_settings' => {
+            'host'  => 'ldapserver.domain.tld',
+            'port'  => 389,
+            'base_dn' => 'OU=Benutzer,OU=OU,dc=DC,dc=DC2,dc=DE',
+            'bind_dn' => 'CN=hdm_ldap,OU=Benutzer,OU=DC,DC=DC2,DC=de',
+            'bind_dn_password' => 's3cr3t',
+          },
+        }
+      end
+
+      it { is_expected.to compile.with_all_deps }
+      it { is_expected.to contain_class('docker') }
+      it { is_expected.to contain_file('/etc/hdm/hdm.yml').with('content' => %r{hiera_config_file: "hiera.yaml"}) }
+      it { is_expected.to contain_file('/etc/hdm/hdm.yml').with('content' => %r{base_dn: OU=Benutzer,OU=OU,dc=DC,dc=DC2,dc=DE}) }
+      it { is_expected.to contain_file('/etc/hdm/hdm.yml').with('content' => %r{bind_dn: CN=hdm_ldap,OU=Benutzer,OU=DC,DC=DC2,DC=de}) }
+    end
   end
 end
