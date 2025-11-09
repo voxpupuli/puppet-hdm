@@ -84,10 +84,10 @@ describe 'hdm' do
           'puppet_dir' => '/etc/puppetlabs',
           'puppet_code_dir' => '/etc/puppet/code',
           'ldap_settings' => {
-            'host'  => 'ldapserver.domain.tld',
-            'port'  => 389,
-            'base_dn' => 'OU=Benutzer,OU=OU,dc=DC,dc=DC2,dc=DE',
-            'bind_dn' => 'CN=hdm_ldap,OU=Benutzer,OU=DC,DC=DC2,DC=de',
+            'host'             => 'ldapserver.domain.tld',
+            'port'             => 389,
+            'base_dn'          => 'OU=Benutzer,OU=OU,dc=DC,dc=DC2,dc=DE',
+            'bind_dn'          => 'CN=hdm_ldap,OU=Benutzer,OU=DC,DC=DC2,DC=de',
             'bind_dn_password' => 's3cr3t',
           },
         }
