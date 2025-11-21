@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v4.0.0](https://github.com/voxpupuli/puppet-hdm/tree/v4.0.0) (2025-11-21)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v3.4.0...v4.0.0)
+
+**Breaking changes:**
+
+- Drop puppet, update openvox minimum version to 8.19 [\#118](https://github.com/voxpupuli/puppet-hdm/pull/118) ([TheMeier](https://github.com/TheMeier))
+- Update LDAP settings to match upstream [\#116](https://github.com/voxpupuli/puppet-hdm/pull/116) ([tuxmea](https://github.com/tuxmea))
+
+**Implemented enhancements:**
+
+- puppetlabs/vcsrepo Allow 7.x [\#117](https://github.com/voxpupuli/puppet-hdm/pull/117) ([TheMeier](https://github.com/TheMeier))
+
+**Fixed bugs:**
+
+- Cert errors for "Show Environments" [\#120](https://github.com/voxpupuli/puppet-hdm/issues/120)
+
+**Merged pull requests:**
+
+- update spec tests for ldap, correct template for https [\#125](https://github.com/voxpupuli/puppet-hdm/pull/125) ([tuxmea](https://github.com/tuxmea))
+
 ## [v3.4.0](https://github.com/voxpupuli/puppet-hdm/tree/v3.4.0) (2025-06-04)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v3.3.0...v3.4.0)
