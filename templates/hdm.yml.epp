@@ -4,7 +4,14 @@
   allow_encryption: <%= $hdm::allow_encryption %>
   puppet_db:
   <%- $hdm::puppetdb_settings.each |$key, $value| { -%>
+    <%- if $key == 'pem' { -%>
+    pem:
+    <%- $value.each |$pem_key, $pem_value| { -%>
+      <%= $pem_key %>: <%= $pem_value %>
+    <%- } -%>
+    <%- } else { -%>
     <%= $key %>: <%= $value %>
+    <%- } -%>
   <%- } -%>
   hiera_config_file: "<%= $hdm::hdm_hiera_config_file %>"
   config_dir: <%= $hdm::puppet_code_dir %>
