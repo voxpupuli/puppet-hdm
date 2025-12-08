@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v4.1.0](https://github.com/voxpupuli/puppet-hdm/tree/v4.1.0) (2025-12-08)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v4.0.0...v4.1.0)
+
+**Implemented enhancements:**
+
+- allow puppet/systemd 9.x, allow puppetlabs/apt 11.x [\#127](https://github.com/voxpupuli/puppet-hdm/pull/127) ([marcusdots](https://github.com/marcusdots))
+
 ## [v4.0.0](https://github.com/voxpupuli/puppet-hdm/tree/v4.0.0) (2025-11-21)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v3.4.0...v4.0.0)
