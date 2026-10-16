@@ -29,7 +29,7 @@ This class controls the installation of HDM
 
 #### Examples
 
-##### 
+#####
 
 ```puppet
 include hdm
@@ -437,4 +437,3 @@ Struct[{
     Optional[cacert] => Stdlib::Unixpath,
   }]
 ```
-
