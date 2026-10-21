@@ -21,8 +21,8 @@
       "version_requirement": ">= 5.2.0 < 9.0.0"
     },
     {
-      "name": "golja/gnupg",
-      "version_requirement": ">= 1.2.3 < 2.0.0"
+      "name": "h0tw1r3/gnupg",
+      "version_requirement": ">= 2.0.2 < 3.0.0"
     },
     {
       "name": "puppet/rvm",
