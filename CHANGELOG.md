@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v5.0.0](https://github.com/voxpupuli/puppet-hdm/tree/v5.0.0) (2026-10-21)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v4.4.0...v5.0.0)
+
+**Breaking changes:**
+
+- switch to latest puppet/rvm release, use gnupg fork [\#142](https://github.com/voxpupuli/puppet-hdm/pull/142) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v4.4.0](https://github.com/voxpupuli/puppet-hdm/tree/v4.4.0) (2026-10-16)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-hdm/compare/v4.3.0...v4.4.0)
