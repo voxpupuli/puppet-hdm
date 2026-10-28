@@ -1,6 +1,6 @@
 {
   "name": "puppet-hdm",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "author": "Vox Pupuli",
   "summary": "Manage Hiera Data Manager application",
   "license": "Apache-2.0",
